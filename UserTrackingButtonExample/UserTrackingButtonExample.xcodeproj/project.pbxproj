@@ -1,0 +1,571 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2BFBEDDD1C14F1650075E626 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFBEDDC1C14F1650075E626 /* AppDelegate.swift */; };
+		2BFBEDDF1C14F1650075E626 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFBEDDE1C14F1650075E626 /* ViewController.swift */; };
+		2BFBEDE21C14F1650075E626 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BFBEDE01C14F1650075E626 /* Main.storyboard */; };
+		2BFBEDE41C14F1650075E626 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BFBEDE31C14F1650075E626 /* Assets.xcassets */; };
+		2BFBEDE71C14F1650075E626 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BFBEDE51C14F1650075E626 /* LaunchScreen.storyboard */; };
+		2BFBEDF21C14F1650075E626 /* UserTrackingButtonExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFBEDF11C14F1650075E626 /* UserTrackingButtonExampleTests.swift */; };
+		2BFBEDFD1C14F1650075E626 /* UserTrackingButtonExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFBEDFC1C14F1650075E626 /* UserTrackingButtonExampleUITests.swift */; };
+		2BFBEE151C14F1F50075E626 /* UserTrackingButton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BFBEE101C14F16E0075E626 /* UserTrackingButton.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2BFBEDEE1C14F1650075E626 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2BFBEDD11C14F1650075E626 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2BFBEDD81C14F1650075E626;
+			remoteInfo = UserTrackingButtonExample;
+		};
+		2BFBEDF91C14F1650075E626 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2BFBEDD11C14F1650075E626 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2BFBEDD81C14F1650075E626;
+			remoteInfo = UserTrackingButtonExample;
+		};
+		2BFBEE0F1C14F16E0075E626 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2BFBEE0A1C14F16E0075E626 /* UserTrackingButton.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2B3AFC1F1C10F35900682B14;
+			remoteInfo = UserTrackingButton;
+		};
+		2BFBEE111C14F16E0075E626 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2BFBEE0A1C14F16E0075E626 /* UserTrackingButton.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2B3AFC291C10F35900682B14;
+			remoteInfo = UserTrackingButtonTests;
+		};
+		2BFBEE131C14F1EF0075E626 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2BFBEE0A1C14F16E0075E626 /* UserTrackingButton.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 2B3AFC1E1C10F35900682B14;
+			remoteInfo = UserTrackingButton;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2BFBEDD91C14F1650075E626 /* UserTrackingButtonExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UserTrackingButtonExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2BFBEDDC1C14F1650075E626 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2BFBEDDE1C14F1650075E626 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2BFBEDE11C14F1650075E626 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2BFBEDE31C14F1650075E626 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2BFBEDE61C14F1650075E626 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2BFBEDE81C14F1650075E626 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2BFBEDED1C14F1650075E626 /* UserTrackingButtonExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UserTrackingButtonExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2BFBEDF11C14F1650075E626 /* UserTrackingButtonExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTrackingButtonExampleTests.swift; sourceTree = "<group>"; };
+		2BFBEDF31C14F1650075E626 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2BFBEDF81C14F1650075E626 /* UserTrackingButtonExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UserTrackingButtonExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2BFBEDFC1C14F1650075E626 /* UserTrackingButtonExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTrackingButtonExampleUITests.swift; sourceTree = "<group>"; };
+		2BFBEDFE1C14F1650075E626 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2BFBEE0A1C14F16E0075E626 /* UserTrackingButton.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = UserTrackingButton.xcodeproj; path = ../UserTrackingButton.xcodeproj; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2BFBEDD61C14F1650075E626 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2BFBEE151C14F1F50075E626 /* UserTrackingButton.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2BFBEDEA1C14F1650075E626 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2BFBEDF51C14F1650075E626 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2BFBEDD01C14F1650075E626 = {
+			isa = PBXGroup;
+			children = (
+				2BFBEE0A1C14F16E0075E626 /* UserTrackingButton.xcodeproj */,
+				2BFBEDDB1C14F1650075E626 /* UserTrackingButtonExample */,
+				2BFBEDF01C14F1650075E626 /* UserTrackingButtonExampleTests */,
+				2BFBEDFB1C14F1650075E626 /* UserTrackingButtonExampleUITests */,
+				2BFBEDDA1C14F1650075E626 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2BFBEDDA1C14F1650075E626 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2BFBEDD91C14F1650075E626 /* UserTrackingButtonExample.app */,
+				2BFBEDED1C14F1650075E626 /* UserTrackingButtonExampleTests.xctest */,
+				2BFBEDF81C14F1650075E626 /* UserTrackingButtonExampleUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2BFBEDDB1C14F1650075E626 /* UserTrackingButtonExample */ = {
+			isa = PBXGroup;
+			children = (
+				2BFBEDDC1C14F1650075E626 /* AppDelegate.swift */,
+				2BFBEDDE1C14F1650075E626 /* ViewController.swift */,
+				2BFBEDE01C14F1650075E626 /* Main.storyboard */,
+				2BFBEDE31C14F1650075E626 /* Assets.xcassets */,
+				2BFBEDE51C14F1650075E626 /* LaunchScreen.storyboard */,
+				2BFBEDE81C14F1650075E626 /* Info.plist */,
+			);
+			path = UserTrackingButtonExample;
+			sourceTree = "<group>";
+		};
+		2BFBEDF01C14F1650075E626 /* UserTrackingButtonExampleTests */ = {
+			isa = PBXGroup;
+			children = (
+				2BFBEDF11C14F1650075E626 /* UserTrackingButtonExampleTests.swift */,
+				2BFBEDF31C14F1650075E626 /* Info.plist */,
+			);
+			path = UserTrackingButtonExampleTests;
+			sourceTree = "<group>";
+		};
+		2BFBEDFB1C14F1650075E626 /* UserTrackingButtonExampleUITests */ = {
+			isa = PBXGroup;
+			children = (
+				2BFBEDFC1C14F1650075E626 /* UserTrackingButtonExampleUITests.swift */,
+				2BFBEDFE1C14F1650075E626 /* Info.plist */,
+			);
+			path = UserTrackingButtonExampleUITests;
+			sourceTree = "<group>";
+		};
+		2BFBEE0B1C14F16E0075E626 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2BFBEE101C14F16E0075E626 /* UserTrackingButton.framework */,
+				2BFBEE121C14F16E0075E626 /* UserTrackingButtonTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2BFBEDD81C14F1650075E626 /* UserTrackingButtonExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2BFBEE011C14F1650075E626 /* Build configuration list for PBXNativeTarget "UserTrackingButtonExample" */;
+			buildPhases = (
+				2BFBEDD51C14F1650075E626 /* Sources */,
+				2BFBEDD61C14F1650075E626 /* Frameworks */,
+				2BFBEDD71C14F1650075E626 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2BFBEE141C14F1EF0075E626 /* PBXTargetDependency */,
+			);
+			name = UserTrackingButtonExample;
+			productName = UserTrackingButtonExample;
+			productReference = 2BFBEDD91C14F1650075E626 /* UserTrackingButtonExample.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2BFBEDEC1C14F1650075E626 /* UserTrackingButtonExampleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2BFBEE041C14F1650075E626 /* Build configuration list for PBXNativeTarget "UserTrackingButtonExampleTests" */;
+			buildPhases = (
+				2BFBEDE91C14F1650075E626 /* Sources */,
+				2BFBEDEA1C14F1650075E626 /* Frameworks */,
+				2BFBEDEB1C14F1650075E626 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2BFBEDEF1C14F1650075E626 /* PBXTargetDependency */,
+			);
+			name = UserTrackingButtonExampleTests;
+			productName = UserTrackingButtonExampleTests;
+			productReference = 2BFBEDED1C14F1650075E626 /* UserTrackingButtonExampleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		2BFBEDF71C14F1650075E626 /* UserTrackingButtonExampleUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2BFBEE071C14F1650075E626 /* Build configuration list for PBXNativeTarget "UserTrackingButtonExampleUITests" */;
+			buildPhases = (
+				2BFBEDF41C14F1650075E626 /* Sources */,
+				2BFBEDF51C14F1650075E626 /* Frameworks */,
+				2BFBEDF61C14F1650075E626 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2BFBEDFA1C14F1650075E626 /* PBXTargetDependency */,
+			);
+			name = UserTrackingButtonExampleUITests;
+			productName = UserTrackingButtonExampleUITests;
+			productReference = 2BFBEDF81C14F1650075E626 /* UserTrackingButtonExampleUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2BFBEDD11C14F1650075E626 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0710;
+				LastUpgradeCheck = 0710;
+				ORGANIZATIONNAME = "Mikko Välimäki";
+				TargetAttributes = {
+					2BFBEDD81C14F1650075E626 = {
+						CreatedOnToolsVersion = 7.1.1;
+					};
+					2BFBEDEC1C14F1650075E626 = {
+						CreatedOnToolsVersion = 7.1.1;
+						TestTargetID = 2BFBEDD81C14F1650075E626;
+					};
+					2BFBEDF71C14F1650075E626 = {
+						CreatedOnToolsVersion = 7.1.1;
+						TestTargetID = 2BFBEDD81C14F1650075E626;
+					};
+				};
+			};
+			buildConfigurationList = 2BFBEDD41C14F1650075E626 /* Build configuration list for PBXProject "UserTrackingButtonExample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2BFBEDD01C14F1650075E626;
+			productRefGroup = 2BFBEDDA1C14F1650075E626 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 2BFBEE0B1C14F16E0075E626 /* Products */;
+					ProjectRef = 2BFBEE0A1C14F16E0075E626 /* UserTrackingButton.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				2BFBEDD81C14F1650075E626 /* UserTrackingButtonExample */,
+				2BFBEDEC1C14F1650075E626 /* UserTrackingButtonExampleTests */,
+				2BFBEDF71C14F1650075E626 /* UserTrackingButtonExampleUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		2BFBEE101C14F16E0075E626 /* UserTrackingButton.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = UserTrackingButton.framework;
+			remoteRef = 2BFBEE0F1C14F16E0075E626 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2BFBEE121C14F16E0075E626 /* UserTrackingButtonTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = UserTrackingButtonTests.xctest;
+			remoteRef = 2BFBEE111C14F16E0075E626 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2BFBEDD71C14F1650075E626 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2BFBEDE71C14F1650075E626 /* LaunchScreen.storyboard in Resources */,
+				2BFBEDE41C14F1650075E626 /* Assets.xcassets in Resources */,
+				2BFBEDE21C14F1650075E626 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2BFBEDEB1C14F1650075E626 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2BFBEDF61C14F1650075E626 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2BFBEDD51C14F1650075E626 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2BFBEDDF1C14F1650075E626 /* ViewController.swift in Sources */,
+				2BFBEDDD1C14F1650075E626 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2BFBEDE91C14F1650075E626 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2BFBEDF21C14F1650075E626 /* UserTrackingButtonExampleTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2BFBEDF41C14F1650075E626 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2BFBEDFD1C14F1650075E626 /* UserTrackingButtonExampleUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2BFBEDEF1C14F1650075E626 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2BFBEDD81C14F1650075E626 /* UserTrackingButtonExample */;
+			targetProxy = 2BFBEDEE1C14F1650075E626 /* PBXContainerItemProxy */;
+		};
+		2BFBEDFA1C14F1650075E626 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2BFBEDD81C14F1650075E626 /* UserTrackingButtonExample */;
+			targetProxy = 2BFBEDF91C14F1650075E626 /* PBXContainerItemProxy */;
+		};
+		2BFBEE141C14F1EF0075E626 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = UserTrackingButton;
+			targetProxy = 2BFBEE131C14F1EF0075E626 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		2BFBEDE01C14F1650075E626 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2BFBEDE11C14F1650075E626 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		2BFBEDE51C14F1650075E626 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2BFBEDE61C14F1650075E626 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2BFBEDFF1C14F1650075E626 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		2BFBEE001C14F1650075E626 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2BFBEE021C14F1650075E626 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = UserTrackingButtonExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mikkovalimaki.UserTrackingButtonExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		2BFBEE031C14F1650075E626 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = UserTrackingButtonExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mikkovalimaki.UserTrackingButtonExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		2BFBEE051C14F1650075E626 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = UserTrackingButtonExampleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mikkovalimaki.UserTrackingButtonExampleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/UserTrackingButtonExample.app/UserTrackingButtonExample";
+			};
+			name = Debug;
+		};
+		2BFBEE061C14F1650075E626 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = UserTrackingButtonExampleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mikkovalimaki.UserTrackingButtonExampleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/UserTrackingButtonExample.app/UserTrackingButtonExample";
+			};
+			name = Release;
+		};
+		2BFBEE081C14F1650075E626 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = UserTrackingButtonExampleUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mikkovalimaki.UserTrackingButtonExampleUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = UserTrackingButtonExample;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		2BFBEE091C14F1650075E626 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = UserTrackingButtonExampleUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mikkovalimaki.UserTrackingButtonExampleUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = UserTrackingButtonExample;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2BFBEDD41C14F1650075E626 /* Build configuration list for PBXProject "UserTrackingButtonExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2BFBEDFF1C14F1650075E626 /* Debug */,
+				2BFBEE001C14F1650075E626 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2BFBEE011C14F1650075E626 /* Build configuration list for PBXNativeTarget "UserTrackingButtonExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2BFBEE021C14F1650075E626 /* Debug */,
+				2BFBEE031C14F1650075E626 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2BFBEE041C14F1650075E626 /* Build configuration list for PBXNativeTarget "UserTrackingButtonExampleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2BFBEE051C14F1650075E626 /* Debug */,
+				2BFBEE061C14F1650075E626 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2BFBEE071C14F1650075E626 /* Build configuration list for PBXNativeTarget "UserTrackingButtonExampleUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2BFBEE081C14F1650075E626 /* Debug */,
+				2BFBEE091C14F1650075E626 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2BFBEDD11C14F1650075E626 /* Project object */;
+}
