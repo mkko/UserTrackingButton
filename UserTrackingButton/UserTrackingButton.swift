@@ -11,7 +11,7 @@ import MapKit
 
 let animationDuration = 0.2
 
-@IBDesignable public class UserTrackingButton : UIControl, MKMapViewDelegate {
+@IBDesignable public class UserTrackingButton : UIButton, MKMapViewDelegate {
     
     private var delegateProxy: MapViewDelegateProxy?
     private var locationButton: UIButton = UIButton()
@@ -177,6 +177,7 @@ let animationDuration = 0.2
     }
     
     public override func prepareForInterfaceBuilder() {
+        self.transitionToState(.TrackingLocationOff, animated: false)
     }
     
     public func getImage(named: String) -> UIImage? {

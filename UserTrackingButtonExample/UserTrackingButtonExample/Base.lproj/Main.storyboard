@@ -21,10 +21,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </mapView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2yh-rS-a33">
-                                <rect key="frame" x="536" y="40" width="44" height="44"/>
+                                <rect key="frame" x="544" y="40" width="36" height="36"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y8m-IZ-MdU" customClass="UserTrackingButton" customModule="UserTrackingButton">
-                                        <rect key="frame" x="7" y="7" width="30" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
                                         <connections>
                                             <outlet property="mapView" destination="n1o-ms-gne" id="YYT-VE-L2R"/>
                                         </connections>
