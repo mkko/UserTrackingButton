@@ -48,8 +48,8 @@ let animationDuration = 0.2
     private func setup() {
         self.addTarget(self, action: "pressed:", forControlEvents: .TouchUpInside)
 
-        self.addButton(self.locationButton, withImage: UserTrackingButton.getImage("TrackingLocationMask"))
-        self.addButton(self.locationOffButton, withImage: UserTrackingButton.getImage("TrackingLocationOffMask"))
+        self.addButton(self.locationButton, withImage: getImage("TrackingLocationMask"))
+        self.addButton(self.locationOffButton, withImage: getImage("TrackingLocationOffMask"))
         
         self.locationOffButton.hidden = true
         self.locationButton.hidden = true
@@ -73,7 +73,7 @@ let animationDuration = 0.2
     
     private func addButton(button: UIButton, withImage image: UIImage?) {
         button.addTarget(self, action: "pressed:", forControlEvents: .TouchUpInside)
-        button.setImage(image, forState: .Normal)
+        button.setImage(image?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(button)
         
@@ -115,6 +115,10 @@ let animationDuration = 0.2
     
     public override func intrinsicContentSize() -> CGSize {
         return self.locationButton.intrinsicContentSize()
+    }
+    
+    public override func tintColorDidChange() {
+        self.trackingActivityIndicator.tintColor = self.tintColor
     }
     
     func pressed(sender: UIButton!) {
@@ -180,9 +184,8 @@ let animationDuration = 0.2
     public override func prepareForInterfaceBuilder() {
     }
     
-    public class func getImage(named: String) -> UIImage? {
-        let bundle = NSBundle(forClass: self)
-        return UIImage(named: named, inBundle: bundle, compatibleWithTraitCollection: nil)
+    public func getImage(named: String) -> UIImage? {
+        return UIImage(named: named, inBundle: NSBundle(forClass: self.dynamicType), compatibleWithTraitCollection: nil)
     }
 }
 
