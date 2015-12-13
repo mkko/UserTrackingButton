@@ -66,7 +66,6 @@ let animationDuration = 0.2
             NSLayoutConstraint(item: self.trackingActivityIndicator, attribute: .CenterY, relatedBy: .Equal, toItem: self, attribute: .CenterY, multiplier: 1, constant: 0),
             ])
         
-        
         self.layer.cornerRadius = 4
         self.clipsToBounds = true
     }
@@ -149,23 +148,19 @@ let animationDuration = 0.2
 
         switch state {
         case .RetrievingLocation:
+            self.locationOffButton.hide(animated)
             self.locationButton.hide(animated) {
-                self.locationOffButton.hide(animated) {
-                    self.trackingActivityIndicator.hidden = false
-                    self.trackingActivityIndicator.startAnimating()
-                }
+                self.trackingActivityIndicator.hidden = false
+                self.trackingActivityIndicator.startAnimating()
             }
         case .TrackingLocation:
             self.trackingActivityIndicator.stopAnimating()
-            
-            self.locationOffButton.hide(animated) {
-                self.locationButton.show(animated)
-            }
+            self.locationOffButton.hide(animated)
+            self.locationButton.show(animated)
         case .TrackingLocationOff:
             self.trackingActivityIndicator.stopAnimating()
-            self.locationButton.hide(animated) {
-                self.locationOffButton.show(animated)
-            }
+            self.locationButton.hide(animated)
+            self.locationOffButton.show(animated)
         default:
             break
         }
@@ -224,6 +219,7 @@ extension UIView {
     }
     
     func show(animated: Bool, completion: (() -> Void)? = nil) {
+        self.superview?.bringSubviewToFront(self)
         setHidden(false, animated: animated, completion: completion)
     }
 }
