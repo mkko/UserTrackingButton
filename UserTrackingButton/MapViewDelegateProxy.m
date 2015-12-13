@@ -48,7 +48,9 @@
     // Support for CCHMapClusterController.
     if ([self.mapView.delegate respondsToSelector:NSSelectorFromString(@"addDelegate:")])
     {
-        [self.mapView.delegate performSelector:NSSelectorFromString(@"addDelegate:") withObject:self];
+        id delegate = self.mapView.delegate;
+        SEL selector = NSSelectorFromString(@"addDelegate:");
+        ((void (*)(id, SEL))[delegate methodForSelector:selector])(delegate, selector);
     }
     else
     {
