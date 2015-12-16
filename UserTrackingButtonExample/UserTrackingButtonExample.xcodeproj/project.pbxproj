@@ -192,6 +192,7 @@
 				2BFBEDD61C14F1650075E626 /* Frameworks */,
 				2BFBEDD71C14F1650075E626 /* Resources */,
 				2BCA0C3C1C1E199F002CB87E /* Embed Frameworks */,
+				2B3ECC4E1C21BC4F00DC4E8C /* Set Build Number */,
 			);
 			buildRules = (
 			);
@@ -332,6 +333,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2B3ECC4E1C21BC4F00DC4E8C /* Set Build Number */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Set Build Number";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#\n# Set the build number to the current git commit count.\n# If we're using the Dev scheme, then we'll suffix the build\n# number with the current branch name, to make collisions\n# far less likely across feature branches.\n# Based on: http://w3facility.info/question/how-do-i-force-xcode-to-rebuild-the-info-plist-file-in-my-project-every-time-i-build-the-project/\n# From: http://blog.jaredsinclair.com/post/97193356620/the-best-of-all-possible-xcode-automated-build\n\ngit=`sh /etc/profile; which git`\necho \"Using $CONFIGURATION configuration\"\nbranchName=`\"$git\" rev-parse --abbrev-ref HEAD`\necho \"Building from branch $branchName\"\n\nappBuild=`\"$git\" rev-list head |wc -l`\nappBuildOffset=$(($CFBundleVersionOffset+0))\nisNum='^-?[0-9]+$'\nif [ $appBuildOffset -ne 0 ]; then\necho \"warning: Using build offset $appBuildOffset\"\nfi\nappBuild=$(($appBuild+$appBuildOffset))\necho \"Build $appBuild\"\n\nif [ $CONFIGURATION = \"Debug\" ]; then\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $appBuild-$branchName\" \"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\nelse\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $appBuild\" \"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\nfi\necho \"Updated ${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2BFBEDD51C14F1650075E626 /* Sources */ = {
