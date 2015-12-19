@@ -11,7 +11,7 @@ import MapKit
 
 let animationDuration = 0.2
 
-@IBDesignable public class UserTrackingButton : UIButton, MKMapViewDelegate {
+@IBDesignable public class UserTrackingButton : UIControl, MKMapViewDelegate {
     
     private var delegateProxy: MapViewDelegateProxy?
     private var locationButton: UIButton = UIButton()
