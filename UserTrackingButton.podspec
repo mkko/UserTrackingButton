@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "UserTrackingButton"
-  s.version      = "0.1"
+  s.version      = "0.1.0"
   s.summary      = "A replacement for MKUserTrackingBarButtonItem"
 
   s.description  = <<-DESC
