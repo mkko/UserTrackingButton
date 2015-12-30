@@ -189,8 +189,7 @@ let animationDuration = 0.2
     // MARK: Interface Builder
     
     public override func prepareForInterfaceBuilder() {
-        self.backgroundColor = UIColor.greenColor()
-        //self.transitionToState(.TrackingLocationOff, animated: false)
+        self.transitionToState(.TrackingLocationOff, animated: false)
     }
     
     // MARK: Button visibility
