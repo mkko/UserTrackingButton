@@ -5,17 +5,23 @@
 
 #import "MapViewDelegateProxy.h"
 
-@interface MapViewDelegateProxy()
+@interface MapViewDelegateProxy() {
+    /**
+     The recapturing status. Will be set to false eventually, if
+     there are cyclic reference to other similar proxies.
+     */
+    BOOL _recapture;
+}
 
-@property (nonatomic, weak) id<MKMapViewDelegate> orignalDelegate;
-@property (nonatomic, weak) id<MKMapViewDelegate> target;
-@property (nonatomic, weak) MKMapView *mapView;
+@property (nonatomic, readwrite, weak) id<MKMapViewDelegate> orignalDelegate;
+@property (nonatomic, readwrite, nonnull) id<MKMapViewDelegate> target;
+@property (nonatomic, readwrite, nonnull) MKMapView *mapView;
 
 @end
 
 @implementation MapViewDelegateProxy
 
-- (instancetype)initWithMapView:(MKMapView *)mapView target:(id<MKMapViewDelegate>)target
+- (nonnull instancetype)initWithMapView:(nonnull MKMapView *)mapView target:(nonnull id<MKMapViewDelegate>)target
 {
     if (self = [super init])
     {
@@ -28,6 +34,7 @@
 
 - (void)setup
 {
+    _recapture = YES;
     [self updateDelegates];
 }
 
@@ -37,7 +44,7 @@
     self.mapView.delegate = self.target;
 }
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+- (void)observeValueForKeyPath:(nullable NSString *)keyPath ofObject:(nullable id)object change:(nullable NSDictionary<NSString*, id> *)change context:(nullable void *)context
 {
     [self.mapView removeObserver:self forKeyPath:@"delegate"];
     [self updateDelegates];
@@ -45,17 +52,24 @@
 
 - (void)updateDelegates
 {
-    // Support for CCHMapClusterController.
-    if ([self.mapView.delegate respondsToSelector:NSSelectorFromString(@"addDelegate:")])
+    if (!_recapture) return;
+    
+    if (self.orignalDelegate != nil && self.orignalDelegate == self.mapView.delegate)
     {
-        id delegate = self.mapView.delegate;
-        SEL selector = NSSelectorFromString(@"addDelegate:");
-        ((void (*)(id, SEL))[delegate methodForSelector:selector])(delegate, selector);
+        // Don't fight it.
+        _recapture = NO;
+        self.orignalDelegate = nil;
     }
     else
     {
-        self.orignalDelegate = self.mapView.delegate;
+        id<MKMapViewDelegate> orignalDelegate = self.mapView.delegate;
+        self.orignalDelegate = nil;
+        
+        // While setting the map view delegate make sure we don't reference the
+        // original delegate. This can cause cyclic respondsToSelector calls.
         self.mapView.delegate = self;
+        self.orignalDelegate = orignalDelegate;
+        
         [self.mapView addObserver:self forKeyPath:@"delegate" options:NSKeyValueObservingOptionNew context:NULL];
     }
 }

@@ -182,7 +182,7 @@ let animationDuration = 0.2
         self.viewState = state
     }
     
-    public func getImage(named: String) -> UIImage? {
+    private func getImage(named: String) -> UIImage? {
         return UIImage(named: named, inBundle: NSBundle(forClass: self.dynamicType), compatibleWithTraitCollection: nil)
     }
     
@@ -194,7 +194,7 @@ let animationDuration = 0.2
     
     // MARK: Button visibility
     
-    // This would be as extension methods but there was some issues when importing
+    // These would be extension methods but there was some issues when importing
     // such a framework and using it as extension.
     
 //}

@@ -9,10 +9,12 @@
 /* Begin PBXBuildFile section */
 		2B3AFC231C10F35900682B14 /* UserTrackingButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B3AFC221C10F35900682B14 /* UserTrackingButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2B3AFC2A1C10F35900682B14 /* UserTrackingButton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B3AFC1F1C10F35900682B14 /* UserTrackingButton.framework */; };
-		2B3AFC2F1C10F35900682B14 /* UserTrackingButtonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3AFC2E1C10F35900682B14 /* UserTrackingButtonTests.swift */; };
 		2B3AFC3A1C10F43900682B14 /* UserTrackingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3AFC391C10F43900682B14 /* UserTrackingButton.swift */; };
 		2B6ED6CE1C122B6B00687203 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B6ED6CD1C122B6B00687203 /* Media.xcassets */; };
 		2B6ED6D21C12553400687203 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B6ED6D11C12553400687203 /* MapKit.framework */; };
+		2BE654031C594BEF0043E080 /* MapViewDelegateProxyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE654021C594BEF0043E080 /* MapViewDelegateProxyTests.swift */; };
+		2BE654051C594D290043E080 /* MapViewDelegateProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BFBED4F1C13A6530075E626 /* MapViewDelegateProxy.m */; };
+		2BE654061C594D2C0043E080 /* UserTrackingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3AFC391C10F43900682B14 /* UserTrackingButton.swift */; };
 		2BFBED501C13A6530075E626 /* MapViewDelegateProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BFBED4E1C13A6530075E626 /* MapViewDelegateProxy.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2BFBED511C13A6530075E626 /* MapViewDelegateProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BFBED4F1C13A6530075E626 /* MapViewDelegateProxy.m */; };
 /* End PBXBuildFile section */
@@ -32,11 +34,12 @@
 		2B3AFC221C10F35900682B14 /* UserTrackingButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserTrackingButton.h; sourceTree = "<group>"; };
 		2B3AFC241C10F35900682B14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B3AFC291C10F35900682B14 /* UserTrackingButtonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UserTrackingButtonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2B3AFC2E1C10F35900682B14 /* UserTrackingButtonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTrackingButtonTests.swift; sourceTree = "<group>"; };
 		2B3AFC301C10F35900682B14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B3AFC391C10F43900682B14 /* UserTrackingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTrackingButton.swift; sourceTree = "<group>"; };
 		2B6ED6CD1C122B6B00687203 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		2B6ED6D11C12553400687203 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		2BE654021C594BEF0043E080 /* MapViewDelegateProxyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewDelegateProxyTests.swift; sourceTree = "<group>"; };
+		2BE654041C594CFD0043E080 /* UserTrackingButton-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UserTrackingButton-Bridging-Header.h"; sourceTree = "<group>"; };
 		2BFBED4E1C13A6530075E626 /* MapViewDelegateProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewDelegateProxy.h; sourceTree = "<group>"; };
 		2BFBED4F1C13A6530075E626 /* MapViewDelegateProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewDelegateProxy.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -95,7 +98,8 @@
 		2B3AFC2D1C10F35900682B14 /* UserTrackingButtonTests */ = {
 			isa = PBXGroup;
 			children = (
-				2B3AFC2E1C10F35900682B14 /* UserTrackingButtonTests.swift */,
+				2BE654041C594CFD0043E080 /* UserTrackingButton-Bridging-Header.h */,
+				2BE654021C594BEF0043E080 /* MapViewDelegateProxyTests.swift */,
 				2B3AFC301C10F35900682B14 /* Info.plist */,
 			);
 			path = UserTrackingButtonTests;
@@ -247,7 +251,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B3AFC2F1C10F35900682B14 /* UserTrackingButtonTests.swift in Sources */,
+				2BE654051C594D290043E080 /* MapViewDelegateProxy.m in Sources */,
+				2BE654061C594D2C0043E080 /* UserTrackingButton.swift in Sources */,
+				2BE654031C594BEF0043E080 /* MapViewDelegateProxyTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,6 +401,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mikkovalimaki.UserTrackingButtonTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "UserTrackingButtonTests/UserTrackingButton-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -405,6 +412,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mikkovalimaki.UserTrackingButtonTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "UserTrackingButtonTests/UserTrackingButton-Bridging-Header.h";
 			};
 			name = Release;
 		};
