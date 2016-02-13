@@ -12,7 +12,7 @@ Add `github "mkko/UserTrackingButton" ~> 0.1` to you `Cartfile`. Follow the furt
 
 *NB: There is a bug with `@IBDesignable` when using external frameworks that prevents the view from rendering wihtin Interface Builder. Further reading can be found [here][2].*
 
-#### Cocoapods
+#### CocoaPods
 
 Add `pod 'UserTrackingButton', '~> 0.1'` to you `Podfile` and run `pod install`.
 
