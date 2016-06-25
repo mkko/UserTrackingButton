@@ -15,5 +15,3 @@ FOUNDATION_EXPORT double UserTrackingButtonVersionNumber;
 FOUNDATION_EXPORT const unsigned char UserTrackingButtonVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <UserTrackingButton/PublicHeader.h>
-
-#import "MapViewDelegateProxy.h"

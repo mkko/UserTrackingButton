@@ -8,17 +8,18 @@
 
 import Foundation
 import MapKit
+import RxSwift
 
 let animationDuration = 0.2
 
 @IBDesignable public class UserTrackingButton : UIControl, MKMapViewDelegate {
     
-    private var delegateProxy: MapViewDelegateProxy?
     private var locationButton: UIButton = UIButton()
     private var locationOffButton: UIButton = UIButton()
     private var trackingActivityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
     private var viewState: ViewState = .Initial
-    
+    private var userTrackingModeSubscription: Disposable?
+
     enum ViewState {
         case Initial
         case RetrievingLocation
@@ -29,8 +30,11 @@ let animationDuration = 0.2
     @IBOutlet public var mapView: MKMapView? {
         didSet {
             if let mapView = mapView {
-                self.delegateProxy = MapViewDelegateProxy(mapView: mapView, target: self)
-                updateState(forMapView: mapView, animated: false)
+                userTrackingModeSubscription?.dispose()
+                userTrackingModeSubscription = mapView.rx_didChangeUserTrackingMode
+                    .subscribeNext { (mode, animated) in
+                        self.updateState(forMapView: mapView, animated: false)
+                }
             }
         }
     }
@@ -94,13 +98,13 @@ let animationDuration = 0.2
     
     // MARK: MKMapViewDelegate Implementation
     
-    public func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
-        updateState(forMapView: mapView, animated: true)
-    }
+//    public func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
+//        updateState(forMapView: mapView.userTrackingMode, animated: true)
+//    }
     
-    public func mapView(mapView: MKMapView, didChangeUserTrackingMode mode: MKUserTrackingMode, animated: Bool) {
-        updateState(forMapView: mapView, animated: true)
-    }
+//    public func mapView(mapView: MKMapView, didChangeUserTrackingMode mode: MKUserTrackingMode, animated: Bool) {
+//        updateState(forMapView: mapView, animated: true)
+//    }
     
     // MARK: Helpers
     

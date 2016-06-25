@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 import UserTrackingButton
 
 class ViewController: UIViewController {
