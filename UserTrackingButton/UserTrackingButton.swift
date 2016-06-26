@@ -106,6 +106,18 @@ let animationDuration = 0.2
 //        updateState(forMapView: mapView, animated: true)
 //    }
     
+    public func updateState(forMapView mapView: MKMapView, animated: Bool) {
+        let state: ViewState
+        if mapView.userTrackingMode == .None {
+            state = .TrackingLocationOff
+        } else if mapView.userLocation.location == nil || mapView.userLocation.location?.horizontalAccuracy >= kCLLocationAccuracyHundredMeters {
+            state = .RetrievingLocation
+        } else {
+            state = .TrackingLocation
+        }
+        transitionToState(state, animated: animated)
+    }
+    3
     // MARK: Helpers
     
     private func addButton(button: UIButton, withImage image: UIImage?) {
@@ -148,18 +160,6 @@ let animationDuration = 0.2
                 multiplier: 1,
                 constant: 0),
             ])
-    }
-    
-    private func updateState(forMapView mapView: MKMapView, animated: Bool) {
-        let state: ViewState
-        if mapView.userTrackingMode == .None {
-            state = .TrackingLocationOff
-        } else if mapView.userLocation.location == nil || mapView.userLocation.location?.horizontalAccuracy >= kCLLocationAccuracyHundredMeters {
-            state = .RetrievingLocation
-        } else {
-            state = .TrackingLocation
-        }
-        transitionToState(state, animated: animated)
     }
     
     private func transitionToState(state: ViewState, animated: Bool) {
