@@ -50,7 +50,7 @@ let animationDuration = 0.2
     }
     
     private func setup() {
-        self.addTarget(self, action: "pressed:", forControlEvents: .TouchUpInside)
+        self.addTarget(self, action: #selector(UserTrackingButton.pressed), forControlEvents: .TouchUpInside)
 
         self.addButton(self.locationButton, withImage: getImage("TrackingLocationMask"))
         self.addButton(self.locationOffButton, withImage: getImage("TrackingLocationOffMask"))
@@ -96,16 +96,6 @@ let animationDuration = 0.2
         mapView?.setUserTrackingMode(userTrackingMode, animated: true)
     }
     
-    // MARK: MKMapViewDelegate Implementation
-    
-//    public func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
-//        updateState(forMapView: mapView.userTrackingMode, animated: true)
-//    }
-    
-//    public func mapView(mapView: MKMapView, didChangeUserTrackingMode mode: MKUserTrackingMode, animated: Bool) {
-//        updateState(forMapView: mapView, animated: true)
-//    }
-    
     public func updateState(forMapView mapView: MKMapView, animated: Bool) {
         let state: ViewState
         if mapView.userTrackingMode == .None {
@@ -117,11 +107,11 @@ let animationDuration = 0.2
         }
         transitionToState(state, animated: animated)
     }
-    3
+    
     // MARK: Helpers
     
     private func addButton(button: UIButton, withImage image: UIImage?) {
-        button.addTarget(self, action: "pressed:", forControlEvents: .TouchUpInside)
+        button.addTarget(self, action: #selector(UserTrackingButton.pressed), forControlEvents: .TouchUpInside)
         button.setImage(image?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(button)
