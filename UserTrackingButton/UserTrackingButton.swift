@@ -8,7 +8,6 @@
 
 import Foundation
 import MapKit
-import RxSwift
 
 let animationDuration = 0.2
 
@@ -18,7 +17,6 @@ let animationDuration = 0.2
     private var locationOffButton: UIButton = UIButton()
     private var trackingActivityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
     private var viewState: ViewState = .Initial
-    private var userTrackingModeSubscription: Disposable?
 
     enum ViewState {
         case Initial
@@ -27,17 +25,7 @@ let animationDuration = 0.2
         case TrackingLocation
     }
     
-    @IBOutlet public var mapView: MKMapView? {
-        didSet {
-            if let mapView = mapView {
-                userTrackingModeSubscription?.dispose()
-                userTrackingModeSubscription = mapView.rx_didChangeUserTrackingMode
-                    .subscribeNext { (mode, animated) in
-                        self.updateState(forMapView: mapView, animated: false)
-                }
-            }
-        }
-    }
+    @IBOutlet public var mapView: MKMapView?
     
     required public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -84,6 +72,12 @@ let animationDuration = 0.2
         self.trackingActivityIndicator.tintColor = self.tintColor
     }
     
+    public func updateState(animated: Bool) {
+        if let mapView = self.mapView {
+            updateState(forMapView: mapView, animated: animated)
+        }
+    }
+    
     internal func pressed(sender: UIButton!) {
         let userTrackingMode: MKUserTrackingMode
         switch mapView?.userTrackingMode {
@@ -96,7 +90,7 @@ let animationDuration = 0.2
         mapView?.setUserTrackingMode(userTrackingMode, animated: true)
     }
     
-    public func updateState(forMapView mapView: MKMapView, animated: Bool) {
+    private func updateState(forMapView mapView: MKMapView, animated: Bool) {
         let state: ViewState
         if mapView.userTrackingMode == .None {
             state = .TrackingLocationOff
@@ -188,14 +182,7 @@ let animationDuration = 0.2
     
     // MARK: Button visibility
     
-    // These would be extension methods but there was some issues when importing
-    // such a framework and using it as extension.
-    
-//}
-//
-//extension UIView {
-    
-    func setHidden(button: UIButton, hidden: Bool, animated: Bool, completion: (() -> Void)? = nil) {
+    private class func setHidden(button: UIButton, hidden: Bool, animated: Bool, completion: (() -> Void)? = nil) {
         guard button.hidden != hidden else {
             completion?()
             return
@@ -223,12 +210,12 @@ let animationDuration = 0.2
         }
     }
     
-    func hide(button: UIButton, animated: Bool, completion: (() -> Void)? = nil) {
-        setHidden(button, hidden: true, animated: animated, completion: completion)
+    private func hide(button: UIButton, animated: Bool, completion: (() -> Void)? = nil) {
+        UserTrackingButton.setHidden(button, hidden: true, animated: animated, completion: completion)
     }
     
-    func show(button: UIButton, animated: Bool, completion: (() -> Void)? = nil) {
+    private func show(button: UIButton, animated: Bool, completion: (() -> Void)? = nil) {
         button.superview?.bringSubviewToFront(self)
-        setHidden(button, hidden: false, animated: animated, completion: completion)
+        UserTrackingButton.setHidden(button, hidden: false, animated: animated, completion: completion)
     }
 }

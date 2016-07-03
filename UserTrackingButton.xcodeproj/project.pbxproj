@@ -7,10 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2B1AA80E1D1F193400DEF421 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B1AA80C1D1F193400DEF421 /* RxCocoa.framework */; };
-		2B1AA80F1D1F193400DEF421 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B1AA80D1D1F193400DEF421 /* RxSwift.framework */; };
-		2B1AA8121D1F1A7700DEF421 /* MapViewDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1AA8111D1F1A7700DEF421 /* MapViewDelegateProxy.swift */; };
-		2B1AA89A1D1F2C4B00DEF421 /* MapViewDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1AA8111D1F1A7700DEF421 /* MapViewDelegateProxy.swift */; };
 		2B3AFC231C10F35900682B14 /* UserTrackingButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B3AFC221C10F35900682B14 /* UserTrackingButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2B3AFC2A1C10F35900682B14 /* UserTrackingButton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B3AFC1F1C10F35900682B14 /* UserTrackingButton.framework */; };
 		2B3AFC3A1C10F43900682B14 /* UserTrackingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3AFC391C10F43900682B14 /* UserTrackingButton.swift */; };
@@ -32,7 +28,6 @@
 /* Begin PBXFileReference section */
 		2B1AA80C1D1F193400DEF421 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = "Carthage/Checkouts/RxSwift/build/Debug-iphoneos/RxCocoa.framework"; sourceTree = "<group>"; };
 		2B1AA80D1D1F193400DEF421 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = "Carthage/Checkouts/RxSwift/build/Debug-iphoneos/RxSwift.framework"; sourceTree = "<group>"; };
-		2B1AA8111D1F1A7700DEF421 /* MapViewDelegateProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewDelegateProxy.swift; sourceTree = "<group>"; };
 		2B3AFC1F1C10F35900682B14 /* UserTrackingButton.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UserTrackingButton.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B3AFC221C10F35900682B14 /* UserTrackingButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserTrackingButton.h; sourceTree = "<group>"; };
 		2B3AFC241C10F35900682B14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,8 +44,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B1AA80E1D1F193400DEF421 /* RxCocoa.framework in Frameworks */,
-				2B1AA80F1D1F193400DEF421 /* RxSwift.framework in Frameworks */,
 				2B6ED6D21C12553400687203 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -99,7 +92,6 @@
 			isa = PBXGroup;
 			children = (
 				2B3AFC391C10F43900682B14 /* UserTrackingButton.swift */,
-				2B1AA8111D1F1A7700DEF421 /* MapViewDelegateProxy.swift */,
 				2B6ED6CD1C122B6B00687203 /* Media.xcassets */,
 				2BFBED531C13A6C50075E626 /* Supporting Files */,
 			);
@@ -251,7 +243,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B1AA8121D1F1A7700DEF421 /* MapViewDelegateProxy.swift in Sources */,
 				2B3AFC3A1C10F43900682B14 /* UserTrackingButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -261,7 +252,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2BE654061C594D2C0043E080 /* UserTrackingButton.swift in Sources */,
-				2B1AA89A1D1F2C4B00DEF421 /* MapViewDelegateProxy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,10 +363,6 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Checkouts/RxSwift/build/Debug-iphoneos",
-				);
 				INFOPLIST_FILE = UserTrackingButton/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
@@ -396,10 +382,6 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Checkouts/RxSwift/build/Debug-iphoneos",
-				);
 				INFOPLIST_FILE = UserTrackingButton/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
