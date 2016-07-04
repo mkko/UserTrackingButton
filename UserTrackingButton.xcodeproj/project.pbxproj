@@ -10,6 +10,10 @@
 		2B3AFC231C10F35900682B14 /* UserTrackingButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B3AFC221C10F35900682B14 /* UserTrackingButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2B3AFC2A1C10F35900682B14 /* UserTrackingButton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B3AFC1F1C10F35900682B14 /* UserTrackingButton.framework */; };
 		2B3AFC3A1C10F43900682B14 /* UserTrackingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3AFC391C10F43900682B14 /* UserTrackingButton.swift */; };
+		2B3F2A341D29A2D900F9FD37 /* UserTrackingButtonTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3F2A331D29A2D900F9FD37 /* UserTrackingButtonTest.swift */; };
+		2B3F2A361D29A79B00F9FD37 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B3F2A351D29A79B00F9FD37 /* UIKit.framework */; };
+		2B3F2A391D29A9CC00F9FD37 /* UIView+UIView_NoAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B3F2A381D29A9CC00F9FD37 /* UIView+UIView_NoAnimation.m */; };
+		2B3F2A3E1D29CF2D00F9FD37 /* MKMapViewStub.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B3F2A3D1D29CF2D00F9FD37 /* MKMapViewStub.m */; };
 		2B6ED6CE1C122B6B00687203 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B6ED6CD1C122B6B00687203 /* Media.xcassets */; };
 		2B6ED6D21C12553400687203 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B6ED6D11C12553400687203 /* MapKit.framework */; };
 		2BE654061C594D2C0043E080 /* UserTrackingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3AFC391C10F43900682B14 /* UserTrackingButton.swift */; };
@@ -34,6 +38,12 @@
 		2B3AFC291C10F35900682B14 /* UserTrackingButtonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UserTrackingButtonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B3AFC301C10F35900682B14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B3AFC391C10F43900682B14 /* UserTrackingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTrackingButton.swift; sourceTree = "<group>"; };
+		2B3F2A331D29A2D900F9FD37 /* UserTrackingButtonTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTrackingButtonTest.swift; sourceTree = "<group>"; };
+		2B3F2A351D29A79B00F9FD37 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		2B3F2A371D29A9CC00F9FD37 /* UIView+UIView_NoAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+UIView_NoAnimation.h"; sourceTree = "<group>"; };
+		2B3F2A381D29A9CC00F9FD37 /* UIView+UIView_NoAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+UIView_NoAnimation.m"; sourceTree = "<group>"; };
+		2B3F2A3C1D29CF2D00F9FD37 /* MKMapViewStub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKMapViewStub.h; sourceTree = "<group>"; };
+		2B3F2A3D1D29CF2D00F9FD37 /* MKMapViewStub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKMapViewStub.m; sourceTree = "<group>"; };
 		2B6ED6CD1C122B6B00687203 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		2B6ED6D11C12553400687203 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		2BE654041C594CFD0043E080 /* UserTrackingButton-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UserTrackingButton-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -52,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B3F2A361D29A79B00F9FD37 /* UIKit.framework in Frameworks */,
 				2B3AFC2A1C10F35900682B14 /* UserTrackingButton.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -62,6 +73,7 @@
 		2B1AA8101D1F1A5800DEF421 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2B3F2A351D29A79B00F9FD37 /* UIKit.framework */,
 				2B1AA80C1D1F193400DEF421 /* RxCocoa.framework */,
 				2B1AA80D1D1F193400DEF421 /* RxSwift.framework */,
 				2B6ED6D11C12553400687203 /* MapKit.framework */,
@@ -103,6 +115,11 @@
 			children = (
 				2BE654041C594CFD0043E080 /* UserTrackingButton-Bridging-Header.h */,
 				2B3AFC301C10F35900682B14 /* Info.plist */,
+				2B3F2A371D29A9CC00F9FD37 /* UIView+UIView_NoAnimation.h */,
+				2B3F2A381D29A9CC00F9FD37 /* UIView+UIView_NoAnimation.m */,
+				2B3F2A331D29A2D900F9FD37 /* UserTrackingButtonTest.swift */,
+				2B3F2A3C1D29CF2D00F9FD37 /* MKMapViewStub.h */,
+				2B3F2A3D1D29CF2D00F9FD37 /* MKMapViewStub.m */,
 			);
 			path = UserTrackingButtonTests;
 			sourceTree = "<group>";
@@ -252,6 +269,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2BE654061C594D2C0043E080 /* UserTrackingButton.swift in Sources */,
+				2B3F2A3E1D29CF2D00F9FD37 /* MKMapViewStub.m in Sources */,
+				2B3F2A341D29A2D900F9FD37 /* UserTrackingButtonTest.swift in Sources */,
+				2B3F2A391D29A9CC00F9FD37 /* UIView+UIView_NoAnimation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
