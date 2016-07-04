@@ -2,4 +2,4 @@
 //  The bridging header for tests
 //
 
-#import "MapViewDelegateProxy.h"
+#import "MKMapViewStub.h"

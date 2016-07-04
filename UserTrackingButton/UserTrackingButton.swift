@@ -16,9 +16,10 @@ let animationDuration = 0.2
     private var locationButton: UIButton = UIButton()
     private var locationOffButton: UIButton = UIButton()
     private var trackingActivityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
-    private var viewState: ViewState = .Initial
+    
+    internal private(set) var viewState: ViewState = .Initial
 
-    enum ViewState {
+    internal enum ViewState {
         case Initial
         case RetrievingLocation
         case TrackingLocationOff
