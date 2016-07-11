@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import MapKit
 import CoreLocation
 import UserTrackingButton
 
 class ViewController: UIViewController {
 
+    @IBOutlet var userTrackingButton: UserTrackingButton!
+    
     let locationManager = CLLocationManager()
 
     override func viewDidLoad() {
@@ -29,3 +32,13 @@ class ViewController: UIViewController {
 
 }
 
+extension ViewController: MKMapViewDelegate {
+    
+    func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
+        userTrackingButton.updateStateAnimated(true)
+    }
+    
+    func mapView(mapView: MKMapView, didChangeUserTrackingMode mode: MKUserTrackingMode, animated: Bool) {
+        userTrackingButton.updateStateAnimated(true)
+    }
+}

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -19,6 +19,9 @@
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n1o-ms-gne">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="FSI-R4-ikf"/>
+                                </connections>
                             </mapView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2yh-rS-a33">
                                 <rect key="frame" x="544" y="40" width="36" height="36"/>
@@ -48,17 +51,29 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jED-Gl-ZO8">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="HaB-nj-MbM"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="n1o-ms-gne" secondAttribute="bottom" id="4Ch-Kl-cTz"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="jED-Gl-ZO8" secondAttribute="bottom" id="7AF-ag-gzn"/>
                             <constraint firstAttribute="trailing" secondItem="n1o-ms-gne" secondAttribute="trailing" id="8K2-Hc-bZk"/>
                             <constraint firstAttribute="trailing" secondItem="2yh-rS-a33" secondAttribute="trailing" constant="20" id="Cgp-je-TOC"/>
+                            <constraint firstItem="jED-Gl-ZO8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="F5V-1P-nhE"/>
                             <constraint firstItem="n1o-ms-gne" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="J5T-ES-V4j"/>
                             <constraint firstItem="n1o-ms-gne" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="eRY-ed-Fj8"/>
+                            <constraint firstAttribute="trailing" secondItem="jED-Gl-ZO8" secondAttribute="trailing" id="ge4-O5-bpJ"/>
                             <constraint firstItem="2yh-rS-a33" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="yrI-Ul-cTw"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="userTrackingButton" destination="lwr-hM-rts" id="iXD-HD-KTL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

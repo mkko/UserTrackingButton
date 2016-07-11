@@ -7,7 +7,4 @@
    <FileRef
       location = "group:../UserTrackingButton.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:../Carthage/Checkouts/RxSwift/Rx.xcodeproj">
-   </FileRef>
 </Workspace>

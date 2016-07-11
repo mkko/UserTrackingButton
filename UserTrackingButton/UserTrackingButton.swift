@@ -13,11 +13,17 @@ let animationDuration = 0.2
 
 @IBDesignable public class UserTrackingButton : UIControl, MKMapViewDelegate {
     
-    private var locationButton: UIButton = UIButton()
-    private var locationOffButton: UIButton = UIButton()
+    private var locationOffButton: UIButton
+    private var locationTrackingImage: UIImageView
+    //private var locationTrackingWithHeadingImage: UIImageView
+    private var locationTrackingButton: UIButton
     private var trackingActivityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
     
     internal private(set) var viewState: ViewState = .Initial
+    
+    private let trackingLocationImageName = "TrackingLocation"
+    private let trackingLocationOffImageName = "TrackingLocationOff"
+    private let trackingLocationWithHeadingImageName = "trackingLocationWithHeading"
 
     internal enum ViewState {
         case Initial
@@ -29,51 +35,81 @@ let animationDuration = 0.2
     @IBOutlet public var mapView: MKMapView?
     
     required public override init(frame: CGRect) {
+        self.locationTrackingImage = UserTrackingButton.imageViewWithImageNamed(trackingLocationImageName)
+        //self.locationTrackingWithHeadingImage = UserTrackingButton.imageViewWithImageNamed(trackingLocationWithHeading)
+        self.locationOffButton = UserTrackingButton.buttonWithImageNamed(trackingLocationOffImageName, renderingMode: .AlwaysTemplate)
+        self.locationTrackingButton = UIButton()
         super.init(frame: frame)
         self.setup()
     }
     
     required public init?(coder aDecoder: NSCoder) {
+        self.locationTrackingImage = UserTrackingButton.imageViewWithImageNamed(trackingLocationImageName)
+        //self.locationTrackingWithHeadingImage = UserTrackingButton.imageViewWithImageNamed(trackingLocationWithHeading)
+        self.locationOffButton = UserTrackingButton.buttonWithImageNamed(trackingLocationOffImageName, renderingMode: .AlwaysTemplate)
+        self.locationTrackingButton = UIButton()
         super.init(coder: aDecoder)
         self.setup()
     }
     
     private func setup() {
-        self.addTarget(self, action: #selector(UserTrackingButton.pressed), forControlEvents: .TouchUpInside)
-
-        self.addButton(self.locationButton, withImage: getImage("TrackingLocationMask"))
-        self.addButton(self.locationOffButton, withImage: getImage("TrackingLocationOffMask"))
+        for one in [self, locationTrackingButton, locationOffButton] {
+            one.addTarget(self, action: #selector(UserTrackingButton.pressed), forControlEvents: .TouchUpInside)
+        }
         
-        self.locationOffButton.hidden = true
-        self.locationButton.hidden = true
-        self.trackingActivityIndicator.stopAnimating()
-
-        self.trackingActivityIndicator.hidesWhenStopped = true
-        self.trackingActivityIndicator.hidden = true
-        self.trackingActivityIndicator.userInteractionEnabled = false
-        self.trackingActivityIndicator.exclusiveTouch = false
-        self.trackingActivityIndicator.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(self.trackingActivityIndicator)
-        self.addConstraints([
-            NSLayoutConstraint(item: self.trackingActivityIndicator, attribute: .CenterX, relatedBy: .Equal, toItem: self, attribute: .CenterX, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: self.trackingActivityIndicator, attribute: .CenterY, relatedBy: .Equal, toItem: self, attribute: .CenterY, multiplier: 1, constant: 0),
+        locationTrackingButton.backgroundColor = self.tintColor
+        stretchView(locationTrackingButton, withinView: self)
+        sendSubviewToBack(locationTrackingButton)
+        
+        stretchView(locationTrackingImage, withinView: locationTrackingButton)
+        locationTrackingImage.hidden = false
+        locationTrackingImage.userInteractionEnabled = false
+        
+        stretchView(locationOffButton, withinView: self)
+        locationOffButton.hidden = true
+        
+        trackingActivityIndicator.stopAnimating()
+        trackingActivityIndicator.hidesWhenStopped = false
+        trackingActivityIndicator.hidden = true
+        trackingActivityIndicator.userInteractionEnabled = false
+        trackingActivityIndicator.exclusiveTouch = false
+        trackingActivityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(trackingActivityIndicator)
+        addConstraints([
+            NSLayoutConstraint(item: trackingActivityIndicator,
+                attribute: .CenterX,
+                relatedBy: .Equal,
+                toItem: self,
+                attribute: .CenterX,
+                multiplier: 1,
+                constant: 0),
+            NSLayoutConstraint(item: trackingActivityIndicator,
+                attribute: .CenterY,
+                relatedBy: .Equal,
+                toItem: self,
+                attribute: .CenterY,
+                multiplier: 1,
+                constant: 0),
             ])
         
-        self.layer.cornerRadius = 4
-        self.clipsToBounds = true
+        layer.cornerRadius = 4
+        clipsToBounds = true
         
-        self.transitionToState(.TrackingLocationOff, animated: false)
+        transitionToState(.TrackingLocationOff, animated: false)
+        
+        setNeedsLayout()
     }
     
     public override func intrinsicContentSize() -> CGSize {
-        return self.locationButton.intrinsicContentSize()
+        return self.locationTrackingImage.intrinsicContentSize()
     }
     
     public override func tintColorDidChange() {
         self.trackingActivityIndicator.tintColor = self.tintColor
+        self.locationTrackingButton.backgroundColor = self.tintColor
     }
     
-    public func updateState(animated: Bool) {
+    public func updateStateAnimated(animated: Bool) {
         if let mapView = self.mapView {
             updateState(forMapView: mapView, animated: animated)
         }
@@ -105,65 +141,69 @@ let animationDuration = 0.2
     
     // MARK: Helpers
     
-    private func addButton(button: UIButton, withImage image: UIImage?) {
-        button.addTarget(self, action: #selector(UserTrackingButton.pressed), forControlEvents: .TouchUpInside)
-        button.setImage(image?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(button)
-        
-        self.addConstraints([
+    private func stretchView(view: UIView, withinView parentView: UIView) {
+        view.translatesAutoresizingMaskIntoConstraints = false
+        parentView.addSubview(view)
+        parentView.addConstraints([
             NSLayoutConstraint(
-                item: button,
+                item: view,
                 attribute: .Leading,
                 relatedBy: .Equal,
-                toItem: self,
+                toItem: parentView,
                 attribute: .Leading,
                 multiplier: 1,
                 constant: 0),
             NSLayoutConstraint(
-                item: button,
+                item: view,
                 attribute: .Trailing,
                 relatedBy: .Equal,
-                toItem: self,
+                toItem: parentView,
                 attribute: .Trailing,
                 multiplier: 1,
                 constant: 0),
             NSLayoutConstraint(
-                item: button,
+                item: view,
                 attribute: .Top,
                 relatedBy: .Equal,
-                toItem: self,
+                toItem: parentView,
                 attribute: .Top,
                 multiplier: 1,
                 constant: 0),
             NSLayoutConstraint(
-                item: button,
+                item: view,
                 attribute: .Bottom,
                 relatedBy: .Equal,
-                toItem: self,
+                toItem: parentView,
                 attribute: .Bottom,
                 multiplier: 1,
                 constant: 0),
             ])
+
     }
     
     private func transitionToState(state: ViewState, animated: Bool) {
         
+        guard self.viewState != state else {
+            return
+        }
+        
         switch state {
         case .RetrievingLocation:
-            self.hide(locationOffButton, animated: animated)
-            self.hide(locationButton, animated: animated) {
-                self.trackingActivityIndicator.hidden = false
+            self.hide(locationOffButton, locationTrackingImage, self.locationTrackingButton, animated: animated) {
                 self.trackingActivityIndicator.startAnimating()
+                self.show(self.trackingActivityIndicator, animated: animated)
             }
         case .TrackingLocation:
-            self.trackingActivityIndicator.stopAnimating()
-            self.hide(locationOffButton, animated: animated)
-            self.show(locationButton, animated: animated)
+            self.hide(self.trackingActivityIndicator, animated: animated)
+            self.show(self.locationTrackingImage, self.locationTrackingButton, animated: animated) {
+                self.trackingActivityIndicator.stopAnimating()
+            }
+            self.hide(self.locationOffButton, animated: animated)
         case .TrackingLocationOff:
-            self.trackingActivityIndicator.stopAnimating()
-            self.hide(locationButton, animated: animated)
-            self.show(locationOffButton, animated: animated)
+            self.show(self.locationOffButton, animated: animated)
+            self.hide(self.locationTrackingImage, self.locationTrackingButton, self.trackingActivityIndicator, animated: animated) {
+                self.trackingActivityIndicator.stopAnimating()
+            }
         default:
             break
         }
@@ -171,10 +211,25 @@ let animationDuration = 0.2
         self.viewState = state
     }
     
-    private func getImage(named: String) -> UIImage? {
-        return UIImage(named: named, inBundle: NSBundle(forClass: self.dynamicType), compatibleWithTraitCollection: nil)
+    private class func buttonWithImageNamed(imageName: String, renderingMode: UIImageRenderingMode) -> UIButton {
+        var button = UIButton()
+        button.setImage(UserTrackingButton.imageNamed(imageName, renderingMode: renderingMode), forState: .Normal)
+        return button
     }
     
+    private class func imageViewWithImageNamed(imageName: String) -> UIImageView {
+        return UIImageView(image: self.imageNamed(imageName))
+    }
+
+    private class func imageNamed(named: String, renderingMode: UIImageRenderingMode? = nil) -> UIImage? {
+        let img = UIImage(named: named, inBundle: NSBundle(forClass: NSClassFromString("UserTrackingButton.UserTrackingButton")!), compatibleWithTraitCollection: nil)
+        if let renderingMode = renderingMode {
+            return img?.imageWithRenderingMode(renderingMode)
+        } else {
+            return img
+        }
+    }
+
     // MARK: Interface Builder
     
     public override func prepareForInterfaceBuilder() {
@@ -183,23 +238,31 @@ let animationDuration = 0.2
     
     // MARK: Button visibility
     
-    private class func setHidden(button: UIButton, hidden: Bool, animated: Bool, completion: (() -> Void)? = nil) {
-        guard button.hidden != hidden else {
-            completion?()
-            return
-        }
+    private func hide(items: UIView..., animated: Bool, completion: (() -> Void)? = nil) {
+        setHidden(items, hidden: true, animated: animated, completion: completion)
+    }
+    
+    private func show(items: UIView..., animated: Bool, completion: (() -> Void)? = nil) {
+        setHidden(items, hidden: false, animated: animated, completion: completion)
+    }
+    
+    private func setHidden(items: [UIView], hidden: Bool, animated: Bool, completion: (() -> Void)? = nil) {
         
-        if button.hidden {
-            button.alpha = 0.0
-            button.hidden = false
+        for item in items where item.hidden {
+            item.alpha = 0.0
+            item.hidden = false
         }
         
         let anim: () -> Void = {
-            button.alpha = hidden ? 0.0 : 1.0
+            for item in items {
+                item.alpha = hidden ? 0.0 : 1.0
+            }
         }
         
         let compl: ((Bool) -> Void) = { _ in
-            button.hidden = hidden
+            for item in items {
+                item.hidden = hidden
+            }
             completion?()
         }
         
@@ -209,14 +272,5 @@ let animationDuration = 0.2
             anim()
             compl(true)
         }
-    }
-    
-    private func hide(button: UIButton, animated: Bool, completion: (() -> Void)? = nil) {
-        UserTrackingButton.setHidden(button, hidden: true, animated: animated, completion: completion)
-    }
-    
-    private func show(button: UIButton, animated: Bool, completion: (() -> Void)? = nil) {
-        button.superview?.bringSubviewToFront(self)
-        UserTrackingButton.setHidden(button, hidden: false, animated: animated, completion: completion)
     }
 }

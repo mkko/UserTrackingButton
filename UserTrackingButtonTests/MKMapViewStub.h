@@ -16,6 +16,6 @@
 
 @interface MKUserLocationStub : MKUserLocation
 
-- (instancetype)initWithLocation:(nullable CLLocation *)location;
+- (nonnull instancetype)initWithLocation:(nullable CLLocation *)location;
 
 @end
