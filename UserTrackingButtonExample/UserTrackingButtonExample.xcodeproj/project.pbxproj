@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2B1AA8981D1F2AE300DEF421 /* UserTrackingButton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B1AA8951D1F2AE300DEF421 /* UserTrackingButton.framework */; };
+		2B7A60081D35279B0021762D /* UserTrackingButton.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2B7A60071D35279B0021762D /* UserTrackingButton.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2BFBEDDD1C14F1650075E626 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFBEDDC1C14F1650075E626 /* AppDelegate.swift */; };
 		2BFBEDDF1C14F1650075E626 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFBEDDE1C14F1650075E626 /* ViewController.swift */; };
 		2BFBEDE21C14F1650075E626 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BFBEDE01C14F1650075E626 /* Main.storyboard */; };
@@ -41,6 +42,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				2B7A60081D35279B0021762D /* UserTrackingButton.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -48,9 +50,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2B1AA8931D1F2AE300DEF421 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = "DerivedData/UserTrackingButtonExample/Build/Products/Debug-iphoneos/RxCocoa.framework"; sourceTree = "<group>"; };
-		2B1AA8941D1F2AE300DEF421 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = "DerivedData/UserTrackingButtonExample/Build/Products/Debug-iphoneos/RxSwift.framework"; sourceTree = "<group>"; };
-		2B1AA8951D1F2AE300DEF421 /* UserTrackingButton.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserTrackingButton.framework; path = "DerivedData/UserTrackingButtonExample/Build/Products/Debug-iphoneos/UserTrackingButton.framework"; sourceTree = "<group>"; };
+		2B1AA8951D1F2AE300DEF421 /* UserTrackingButton.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserTrackingButton.framework; path = "/Users/mval/Development/Personal/UserTrackingButton/UserTrackingButtonExample/DerivedData/UserTrackingButtonExample/Build/Products/Debug-iphoneos/UserTrackingButton.framework"; sourceTree = "<absolute>"; };
+		2B7A60071D35279B0021762D /* UserTrackingButton.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = UserTrackingButton.framework; path = "/Users/mval/Library/Developer/Xcode/DerivedData/UserTrackingButtonExample-cnghbwrgmylnmtcjmpuqomsxxcgg/Build/Products/Debug-iphoneos/UserTrackingButton.framework"; sourceTree = "<absolute>"; };
 		2BFBEDD91C14F1650075E626 /* UserTrackingButtonExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UserTrackingButtonExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BFBEDDC1C14F1650075E626 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2BFBEDDE1C14F1650075E626 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -95,9 +96,7 @@
 		2B1AA8991D1F2B2E00DEF421 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2B1AA8931D1F2AE300DEF421 /* RxCocoa.framework */,
-				2B1AA8941D1F2AE300DEF421 /* RxSwift.framework */,
-				2B1AA8951D1F2AE300DEF421 /* UserTrackingButton.framework */,
+				2B7A60071D35279B0021762D /* UserTrackingButton.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

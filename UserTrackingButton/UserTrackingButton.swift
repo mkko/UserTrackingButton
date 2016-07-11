@@ -14,29 +14,32 @@ let animationDuration = 0.2
 @IBDesignable public class UserTrackingButton : UIControl, MKMapViewDelegate {
     
     private var locationOffButton: UIButton
-    private var locationTrackingImage: UIImageView
-    //private var locationTrackingWithHeadingImage: UIImageView
     private var locationTrackingButton: UIButton
+    private var locationTrackingImage: UIImageView
+    private var locationTrackingWithHeadingImage: UIImageView
     private var trackingActivityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
     
     internal private(set) var viewState: ViewState = .Initial
     
     private let trackingLocationImageName = "TrackingLocation"
     private let trackingLocationOffImageName = "TrackingLocationOff"
-    private let trackingLocationWithHeadingImageName = "trackingLocationWithHeading"
+    private let trackingLocationWithHeadingImageName = "TrackingLocationWithHeading"
 
     internal enum ViewState {
         case Initial
         case RetrievingLocation
         case TrackingLocationOff
         case TrackingLocation
+        case TrackingLocationWithHeading
     }
     
     @IBOutlet public var mapView: MKMapView?
     
+    // MARK: Init
+    
     required public override init(frame: CGRect) {
         self.locationTrackingImage = UserTrackingButton.imageViewWithImageNamed(trackingLocationImageName)
-        //self.locationTrackingWithHeadingImage = UserTrackingButton.imageViewWithImageNamed(trackingLocationWithHeading)
+        self.locationTrackingWithHeadingImage = UserTrackingButton.imageViewWithImageNamed(trackingLocationWithHeadingImageName)
         self.locationOffButton = UserTrackingButton.buttonWithImageNamed(trackingLocationOffImageName, renderingMode: .AlwaysTemplate)
         self.locationTrackingButton = UIButton()
         super.init(frame: frame)
@@ -45,7 +48,7 @@ let animationDuration = 0.2
     
     required public init?(coder aDecoder: NSCoder) {
         self.locationTrackingImage = UserTrackingButton.imageViewWithImageNamed(trackingLocationImageName)
-        //self.locationTrackingWithHeadingImage = UserTrackingButton.imageViewWithImageNamed(trackingLocationWithHeading)
+        self.locationTrackingWithHeadingImage = UserTrackingButton.imageViewWithImageNamed(trackingLocationWithHeadingImageName)
         self.locationOffButton = UserTrackingButton.buttonWithImageNamed(trackingLocationOffImageName, renderingMode: .AlwaysTemplate)
         self.locationTrackingButton = UIButton()
         super.init(coder: aDecoder)
@@ -61,9 +64,10 @@ let animationDuration = 0.2
         stretchView(locationTrackingButton, withinView: self)
         sendSubviewToBack(locationTrackingButton)
         
+        stretchView(locationTrackingWithHeadingImage, withinView: locationTrackingButton)
         stretchView(locationTrackingImage, withinView: locationTrackingButton)
-        locationTrackingImage.hidden = false
-        locationTrackingImage.userInteractionEnabled = false
+        locationTrackingImage.hidden = true
+        locationTrackingWithHeadingImage.hidden = true
         
         stretchView(locationOffButton, withinView: self)
         locationOffButton.hidden = true
@@ -96,9 +100,9 @@ let animationDuration = 0.2
         clipsToBounds = true
         
         transitionToState(.TrackingLocationOff, animated: false)
-        
-        setNeedsLayout()
     }
+    
+    // MARK: Public methods
     
     public override func intrinsicContentSize() -> CGSize {
         return self.locationTrackingImage.intrinsicContentSize()
@@ -115,31 +119,93 @@ let animationDuration = 0.2
         }
     }
     
+    // MARK: UI interaction
+    
     internal func pressed(sender: UIButton!) {
+        guard let mapView = mapView else { return }
+        
         let userTrackingMode: MKUserTrackingMode
-        switch mapView?.userTrackingMode {
-        case .Some(MKUserTrackingMode.Follow):
+        switch mapView.userTrackingMode {
+        case MKUserTrackingMode.Follow where isMapViewRetrievingLocation(mapView):
+            // If still retrieving location, button should abort it.
+            userTrackingMode = MKUserTrackingMode.None
+        case MKUserTrackingMode.Follow:
+            userTrackingMode = MKUserTrackingMode.FollowWithHeading
+        case MKUserTrackingMode.FollowWithHeading:
             userTrackingMode = MKUserTrackingMode.None
         default:
             userTrackingMode = MKUserTrackingMode.Follow
         }
 
-        mapView?.setUserTrackingMode(userTrackingMode, animated: true)
+        mapView.setUserTrackingMode(userTrackingMode, animated: true)
+    }
+    
+    // MARK: Helper methods
+    
+    private func transitionToState(state: ViewState, animated: Bool) {
+        
+        guard self.viewState != state else { return }
+        
+        let imageShapeWillChange = !(
+                [.TrackingLocationOff, .TrackingLocation].contains(self.viewState) &&
+                [.TrackingLocationOff, .TrackingLocation].contains(state))
+        
+        switch state {
+        case .RetrievingLocation:
+            self.setHidden(locationTrackingButton, locationOffButton, hidden: true, animated: animated, shouldScale: imageShapeWillChange) {
+                self.trackingActivityIndicator.startAnimating()
+                self.setHidden(self.trackingActivityIndicator, hidden: false, animated: animated, shouldScale: imageShapeWillChange)
+            }
+        case .TrackingLocation:
+            fallthrough
+        case .TrackingLocationWithHeading:
+            self.setHidden(self.trackingActivityIndicator, self.locationOffButton, hidden: true, animated: animated, shouldScale: imageShapeWillChange)
+            self.setHidden(locationTrackingButton, hidden: false, animated: animated) {
+                self.trackingActivityIndicator.stopAnimating()
+            }
+            if state == .TrackingLocation {
+                self.setHidden(self.locationTrackingWithHeadingImage, hidden: true, animated: animated, shouldScale: imageShapeWillChange) {
+                    self.setHidden(self.locationTrackingImage, hidden: false, animated: animated, shouldScale: imageShapeWillChange)
+                }
+            } else {
+                self.setHidden(self.locationTrackingImage, hidden: true, animated: animated, shouldScale: imageShapeWillChange) {
+                    self.setHidden(self.locationTrackingWithHeadingImage, hidden: false, animated: animated, shouldScale: imageShapeWillChange)
+                }
+            }
+        case .TrackingLocationOff:
+            self.setHidden(self.trackingActivityIndicator, hidden: true, animated: animated, shouldScale: imageShapeWillChange) {
+                self.trackingActivityIndicator.stopAnimating()
+            }
+            self.setHidden(self.locationTrackingButton, hidden: true, animated: animated)
+            self.setHidden(self.locationTrackingImage, self.locationTrackingWithHeadingImage, hidden: true, animated: animated, shouldScale: imageShapeWillChange) {
+                self.setHidden(self.locationOffButton, hidden: false, animated: animated, shouldScale: imageShapeWillChange)
+            }
+        default:
+            break
+        }
+
+        self.viewState = state
     }
     
     private func updateState(forMapView mapView: MKMapView, animated: Bool) {
         let state: ViewState
-        if mapView.userTrackingMode == .None {
-            state = .TrackingLocationOff
-        } else if mapView.userLocation.location == nil || mapView.userLocation.location?.horizontalAccuracy >= kCLLocationAccuracyHundredMeters {
+        switch mapView.userTrackingMode {
+        case _ where isMapViewRetrievingLocation(mapView):
             state = .RetrievingLocation
-        } else {
+        case .Follow:
             state = .TrackingLocation
+        case .FollowWithHeading:
+            state = .TrackingLocationWithHeading
+        default:
+            state = .TrackingLocationOff
         }
         transitionToState(state, animated: animated)
     }
     
-    // MARK: Helpers
+    private func isMapViewRetrievingLocation(mapView: MKMapView) -> Bool {
+        return mapView.userLocation.location == nil
+            || mapView.userLocation.location?.horizontalAccuracy >= kCLLocationAccuracyHundredMeters
+    }
     
     private func stretchView(view: UIView, withinView parentView: UIView) {
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -178,37 +244,7 @@ let animationDuration = 0.2
                 multiplier: 1,
                 constant: 0),
             ])
-
-    }
-    
-    private func transitionToState(state: ViewState, animated: Bool) {
         
-        guard self.viewState != state else {
-            return
-        }
-        
-        switch state {
-        case .RetrievingLocation:
-            self.hide(locationOffButton, locationTrackingImage, self.locationTrackingButton, animated: animated) {
-                self.trackingActivityIndicator.startAnimating()
-                self.show(self.trackingActivityIndicator, animated: animated)
-            }
-        case .TrackingLocation:
-            self.hide(self.trackingActivityIndicator, animated: animated)
-            self.show(self.locationTrackingImage, self.locationTrackingButton, animated: animated) {
-                self.trackingActivityIndicator.stopAnimating()
-            }
-            self.hide(self.locationOffButton, animated: animated)
-        case .TrackingLocationOff:
-            self.show(self.locationOffButton, animated: animated)
-            self.hide(self.locationTrackingImage, self.locationTrackingButton, self.trackingActivityIndicator, animated: animated) {
-                self.trackingActivityIndicator.stopAnimating()
-            }
-        default:
-            break
-        }
-        
-        self.viewState = state
     }
     
     private class func buttonWithImageNamed(imageName: String, renderingMode: UIImageRenderingMode) -> UIButton {
@@ -220,7 +256,7 @@ let animationDuration = 0.2
     private class func imageViewWithImageNamed(imageName: String) -> UIImageView {
         return UIImageView(image: self.imageNamed(imageName))
     }
-
+    
     private class func imageNamed(named: String, renderingMode: UIImageRenderingMode? = nil) -> UIImage? {
         let img = UIImage(named: named, inBundle: NSBundle(forClass: NSClassFromString("UserTrackingButton.UserTrackingButton")!), compatibleWithTraitCollection: nil)
         if let renderingMode = renderingMode {
@@ -229,39 +265,37 @@ let animationDuration = 0.2
             return img
         }
     }
-
-    // MARK: Interface Builder
     
-    public override func prepareForInterfaceBuilder() {
-        self.transitionToState(.TrackingLocationOff, animated: false)
-    }
-    
-    // MARK: Button visibility
-    
-    private func hide(items: UIView..., animated: Bool, completion: (() -> Void)? = nil) {
-        setHidden(items, hidden: true, animated: animated, completion: completion)
-    }
-    
-    private func show(items: UIView..., animated: Bool, completion: (() -> Void)? = nil) {
-        setHidden(items, hidden: false, animated: animated, completion: completion)
-    }
-    
-    private func setHidden(items: [UIView], hidden: Bool, animated: Bool, completion: (() -> Void)? = nil) {
+    private func setHidden(items: UIView..., hidden: Bool, animated: Bool, shouldScale: Bool = false, completion: (() -> Void)? = nil) {
         
-        for item in items where item.hidden {
-            item.alpha = 0.0
+        let itemsToChange = items.filter { $0.hidden != hidden }
+        
+        for item in itemsToChange {
+            // If the item is hidden make it visible.
+            if shouldScale {
+                item.transform = item.hidden ? CGAffineTransformMakeScale(0.01, 0.01) : CGAffineTransformIdentity
+                item.alpha = 1.0
+            } else {
+                item.alpha = item.hidden ? 0.0 : 1.0
+                item.transform = CGAffineTransformIdentity
+            }
             item.hidden = false
         }
         
         let anim: () -> Void = {
-            for item in items {
-                item.alpha = hidden ? 0.0 : 1.0
+            for item in itemsToChange {
+                if shouldScale {
+                    item.transform = hidden ? CGAffineTransformMakeScale(0.01, 0.01) : CGAffineTransformIdentity
+                } else {
+                    item.alpha = hidden ? 0.0 : 1.0
+                }
             }
         }
         
         let compl: ((Bool) -> Void) = { _ in
-            for item in items {
+            for item in itemsToChange {
                 item.hidden = hidden
+                item.transform = CGAffineTransformIdentity
             }
             completion?()
         }
@@ -272,5 +306,11 @@ let animationDuration = 0.2
             anim()
             compl(true)
         }
+    }
+    
+    // MARK: Interface Builder
+    
+    public override func prepareForInterfaceBuilder() {
+        self.transitionToState(.TrackingLocationOff, animated: false)
     }
 }

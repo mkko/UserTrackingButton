@@ -72,6 +72,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="mapView" destination="n1o-ms-gne" id="LlX-nw-Oks"/>
+                        <outlet property="toolbar" destination="jED-Gl-ZO8" id="b4I-ld-0dj"/>
                         <outlet property="userTrackingButton" destination="lwr-hM-rts" id="iXD-HD-KTL"/>
                     </connections>
                 </viewController>

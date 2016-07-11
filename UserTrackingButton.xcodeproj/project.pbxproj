@@ -30,8 +30,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2B1AA80C1D1F193400DEF421 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = "Carthage/Checkouts/RxSwift/build/Debug-iphoneos/RxCocoa.framework"; sourceTree = "<group>"; };
-		2B1AA80D1D1F193400DEF421 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = "Carthage/Checkouts/RxSwift/build/Debug-iphoneos/RxSwift.framework"; sourceTree = "<group>"; };
 		2B3AFC1F1C10F35900682B14 /* UserTrackingButton.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UserTrackingButton.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B3AFC221C10F35900682B14 /* UserTrackingButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserTrackingButton.h; sourceTree = "<group>"; };
 		2B3AFC241C10F35900682B14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -74,8 +72,6 @@
 			isa = PBXGroup;
 			children = (
 				2B3F2A351D29A79B00F9FD37 /* UIKit.framework */,
-				2B1AA80C1D1F193400DEF421 /* RxCocoa.framework */,
-				2B1AA80D1D1F193400DEF421 /* RxSwift.framework */,
 				2B6ED6D11C12553400687203 /* MapKit.framework */,
 			);
 			name = Frameworks;
