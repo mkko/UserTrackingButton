@@ -203,8 +203,9 @@ let animationDuration = 0.2
     }
     
     private func isMapViewRetrievingLocation(mapView: MKMapView) -> Bool {
-        return mapView.userLocation.location == nil
-            || mapView.userLocation.location?.horizontalAccuracy >= kCLLocationAccuracyHundredMeters
+        return mapView.userTrackingMode != .None
+            && (mapView.userLocation.location == nil
+                || mapView.userLocation.location?.horizontalAccuracy >= kCLLocationAccuracyHundredMeters)
     }
     
     private func stretchView(view: UIView, withinView parentView: UIView) {
