@@ -18,12 +18,14 @@ let animationDuration = 0.2
     private var locationTrackingImage: UIImageView
     private var locationTrackingWithHeadingImage: UIImageView
     private var trackingActivityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
-    
+    private let serialQueue = dispatch_queue_create("com.mikkovalimaki.UserTrackingButton", DISPATCH_QUEUE_SERIAL);
+
     internal private(set) var viewState: ViewState = .Initial
     
     private let trackingLocationImageName = "TrackingLocation"
     private let trackingLocationOffImageName = "TrackingLocationOff"
     private let trackingLocationWithHeadingImageName = "TrackingLocationWithHeading"
+    private let AnimationDuration = 0.2
 
     internal enum ViewState {
         case Initial
@@ -188,18 +190,21 @@ let animationDuration = 0.2
     }
     
     private func updateState(forMapView mapView: MKMapView, animated: Bool) {
-        let state: ViewState
-        switch mapView.userTrackingMode {
-        case _ where isMapViewRetrievingLocation(mapView):
-            state = .RetrievingLocation
-        case .Follow:
-            state = .TrackingLocation
-        case .FollowWithHeading:
-            state = .TrackingLocationWithHeading
-        default:
-            state = .TrackingLocationOff
+        
+        dispatch_sync(serialQueue) {
+            let nextState: ViewState
+            switch mapView.userTrackingMode {
+            case _ where self.isMapViewRetrievingLocation(mapView):
+                nextState = .RetrievingLocation
+            case .Follow:
+                nextState = .TrackingLocation
+            case .FollowWithHeading:
+                nextState = .TrackingLocationWithHeading
+            default:
+                nextState = .TrackingLocationOff
+            }
+            self.transitionToState(nextState, animated: animated)
         }
-        transitionToState(state, animated: animated)
     }
     
     private func isMapViewRetrievingLocation(mapView: MKMapView) -> Bool {
@@ -272,6 +277,7 @@ let animationDuration = 0.2
         let itemsToChange = items.filter { $0.hidden != hidden }
         
         for item in itemsToChange {
+            item.layer.removeAllAnimations()
             // If the item is hidden make it visible.
             if shouldScale {
                 item.transform = item.hidden ? CGAffineTransformMakeScale(0.01, 0.01) : CGAffineTransformIdentity
@@ -293,16 +299,19 @@ let animationDuration = 0.2
             }
         }
         
-        let compl: ((Bool) -> Void) = { _ in
-            for item in itemsToChange {
-                item.hidden = hidden
-                item.transform = CGAffineTransformIdentity
+        let compl: ((Bool) -> Void) = { completed in
+            if completed {
+                for item in itemsToChange {
+                    item.hidden = hidden
+                    item.transform = CGAffineTransformIdentity
+                }
             }
             completion?()
         }
         
         if animated {
-            UIView.animateWithDuration(0.2, animations: anim, completion: compl)
+            UIView.animateWithDuration(AnimationDuration, delay: 0, options: .BeginFromCurrentState, animations: anim, completion: compl)
+            //UIView.animateWithDuration(0.2, animations: anim, completion: compl)
         } else {
             anim()
             compl(true)
