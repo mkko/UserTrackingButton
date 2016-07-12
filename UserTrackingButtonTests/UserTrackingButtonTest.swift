@@ -14,6 +14,7 @@ class UserTrackingButtonTest: XCTestCase {
     
     private var button: UserTrackingButton = UserTrackingButton()
     private var mapView: MKMapViewStub = MKMapViewStub()
+    private var userLocation = MKUserLocationStub(location: CLLocation(latitude: 0, longitude: 0))
     
     override func setUp() {
         super.setUp()
@@ -25,16 +26,23 @@ class UserTrackingButtonTest: XCTestCase {
     }
     
     func testStateTracking() {
-        mapView.setupUserTrackingMode(MKUserTrackingMode.Follow, location: MKUserLocationStub(location: CLLocation(latitude: 0, longitude: 0)))
+        mapView.setupUserTrackingMode(MKUserTrackingMode.Follow, location: userLocation)
         
-        button.updateState(true)
+        button.updateStateAnimated(true)
         XCTAssertEqual(UserTrackingButton.ViewState.TrackingLocation, button.viewState)
     }
     
     func testStateRetrieving() {
         mapView.setupUserTrackingMode(MKUserTrackingMode.Follow, location: nil)
         
-        button.updateState(true)
+        button.updateStateAnimated(true)
         XCTAssertEqual(UserTrackingButton.ViewState.RetrievingLocation, button.viewState)
+    }
+    
+    func testStateTrackingWithHeading() {
+        mapView.setupUserTrackingMode(MKUserTrackingMode.FollowWithHeading, location: userLocation)
+        
+        button.updateStateAnimated(true)
+        XCTAssertEqual(UserTrackingButton.ViewState.TrackingLocationWithHeading, button.viewState)
     }
 }
