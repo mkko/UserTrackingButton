@@ -24,7 +24,7 @@
                                 </connections>
                             </mapView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2yh-rS-a33">
-                                <rect key="frame" x="544" y="40" width="36" height="36"/>
+                                <rect key="frame" x="548" y="500" width="36" height="36"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lwr-hM-rts" customClass="UserTrackingButton" customModule="UserTrackingButton">
                                         <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
@@ -63,13 +63,19 @@
                             <constraint firstAttribute="bottom" secondItem="n1o-ms-gne" secondAttribute="bottom" id="4Ch-Kl-cTz"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="jED-Gl-ZO8" secondAttribute="bottom" id="7AF-ag-gzn"/>
                             <constraint firstAttribute="trailing" secondItem="n1o-ms-gne" secondAttribute="trailing" id="8K2-Hc-bZk"/>
-                            <constraint firstAttribute="trailing" secondItem="2yh-rS-a33" secondAttribute="trailing" constant="20" id="Cgp-je-TOC"/>
+                            <constraint firstAttribute="trailing" secondItem="2yh-rS-a33" secondAttribute="trailing" constant="16" id="Cgp-je-TOC"/>
                             <constraint firstItem="jED-Gl-ZO8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="F5V-1P-nhE"/>
                             <constraint firstItem="n1o-ms-gne" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="J5T-ES-V4j"/>
                             <constraint firstItem="n1o-ms-gne" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="eRY-ed-Fj8"/>
                             <constraint firstAttribute="trailing" secondItem="jED-Gl-ZO8" secondAttribute="trailing" id="ge4-O5-bpJ"/>
+                            <constraint firstItem="jED-Gl-ZO8" firstAttribute="top" secondItem="2yh-rS-a33" secondAttribute="bottom" constant="20" id="pd2-jl-zZe"/>
                             <constraint firstItem="2yh-rS-a33" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="yrI-Ul-cTw"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="yrI-Ul-cTw"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="mapView" destination="n1o-ms-gne" id="LlX-nw-Oks"/>
