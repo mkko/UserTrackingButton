@@ -28,7 +28,7 @@ class ViewController: UIViewController {
         locationManager.requestWhenInUseAuthorization()
         
         toolbar.setItems([
-            UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil),
+            UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil),
             MKUserTrackingBarButtonItem(mapView: self.mapView)
             ], animated: false)
     }
@@ -43,11 +43,11 @@ class ViewController: UIViewController {
 
 extension ViewController: MKMapViewDelegate {
     
-    func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
-        userTrackingButton.updateStateAnimated(true)
+    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
+        userTrackingButton.updateStateAnimated(animated: true)
     }
     
-    func mapView(mapView: MKMapView, didChangeUserTrackingMode mode: MKUserTrackingMode, animated: Bool) {
-        userTrackingButton.updateStateAnimated(true)
+    func mapView(_ mapView: MKMapView, didChange mode: MKUserTrackingMode, animated: Bool) {
+        userTrackingButton.updateStateAnimated(animated: true)
     }
 }
