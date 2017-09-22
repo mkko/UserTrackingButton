@@ -79,7 +79,7 @@ let animationDuration = 0.2
     
     fileprivate func setup() {
         for one in [self, locationTrackingButton, locationOffButton] as [Any] {
-            (one as AnyObject).addTarget(self, action: #selector(UserTrackingButton.pressed), for: .touchUpInside)
+            (one as AnyObject).addTarget(self, action: #selector(UserTrackingButton.pressed(_:)), for: .touchUpInside)
         }
         
         locationTrackingButton.backgroundColor = self.tintColor
@@ -143,20 +143,20 @@ let animationDuration = 0.2
     
     // MARK: UI interaction
     
-    internal func pressed(_ sender: UIButton!) {
+    @objc internal func pressed(_ sender: UIButton!) {
         guard let mapView = mapView else { return }
         
         let userTrackingMode: MKUserTrackingMode
         switch mapView.userTrackingMode {
         case MKUserTrackingMode.follow where isMapViewRetrievingLocation(mapView):
             // If still retrieving location, button should abort it.
-            userTrackingMode = MKUserTrackingMode.none
+            userTrackingMode = .none
         case MKUserTrackingMode.follow:
-            userTrackingMode = MKUserTrackingMode.followWithHeading
+            userTrackingMode = .followWithHeading
         case MKUserTrackingMode.followWithHeading:
-            userTrackingMode = MKUserTrackingMode.none
+            userTrackingMode = .none
         default:
-            userTrackingMode = MKUserTrackingMode.follow
+            userTrackingMode = .follow
         }
 
         mapView.setUserTrackingMode(userTrackingMode, animated: true)
