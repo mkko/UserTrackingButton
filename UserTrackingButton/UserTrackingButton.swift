@@ -8,26 +8,6 @@
 
 import Foundation
 import MapKit
-fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l < r
-  case (nil, _?):
-    return true
-  default:
-    return false
-  }
-}
-
-fileprivate func >= <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l >= r
-  default:
-    return !(lhs < rhs)
-  }
-}
-
 
 let animationDuration = 0.2
 
@@ -228,9 +208,11 @@ let animationDuration = 0.2
     }
     
     fileprivate func isMapViewRetrievingLocation(_ mapView: MKMapView) -> Bool {
+        let isAccurate = (mapView.userLocation.location?.horizontalAccuracy)
+            .map { $0 >= kCLLocationAccuracyHundredMeters }
+            ?? false
         return mapView.userTrackingMode != .none
-            && (mapView.userLocation.location == nil
-                || mapView.userLocation.location?.horizontalAccuracy >= kCLLocationAccuracyHundredMeters)
+            && (mapView.userLocation.location == nil || !isAccurate)
     }
     
     fileprivate func stretchView(_ view: UIView, withinView parentView: UIView) {
