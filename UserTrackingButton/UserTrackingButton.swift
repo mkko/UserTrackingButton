@@ -13,27 +13,21 @@ let animationDuration = 0.2
 
 @IBDesignable open class UserTrackingButton : UIControl, MKMapViewDelegate {
     
-    fileprivate var locationOffButton: UIButton
-    fileprivate var locationTrackingButton: UIButton
-    fileprivate var locationTrackingImage: UIImageView
-    fileprivate var locationTrackingWithHeadingImage: UIImageView
-    fileprivate var trackingActivityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
-    fileprivate let serialQueue = DispatchQueue(label: "com.mikkovalimaki.UserTrackingButton", attributes: []);
+    private var locationOffButton: UIButton
+    private var locationTrackingButton: UIButton
+    private var locationTrackingImage: UIImageView
+    private var locationTrackingWithHeadingImage: UIImageView
+    private var trackingActivityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+    private let serialQueue = DispatchQueue(label: "com.mikkovalimaki.UserTrackingButton", attributes: []);
 
-    internal fileprivate(set) var viewState: ViewState = .initial
+    //internal fileprivate(set) var viewState: ViewState = .initial
+
+    private var tracker = Tracker()
     
-    fileprivate let trackingLocationImageName = "TrackingLocation"
-    fileprivate let trackingLocationOffImageName = "TrackingLocationOff"
-    fileprivate let trackingLocationWithHeadingImageName = "TrackingLocationWithHeading"
-    fileprivate let AnimationDuration = 0.2
-
-    internal enum ViewState {
-        case initial
-        case retrievingLocation
-        case trackingLocationOff
-        case trackingLocation
-        case trackingLocationWithHeading
-    }
+    private let trackingLocationImageName = "TrackingLocation"
+    private let trackingLocationOffImageName = "TrackingLocationOff"
+    private let trackingLocationWithHeadingImageName = "TrackingLocationWithHeading"
+    private let AnimationDuration = 0.2
     
     @IBOutlet open var mapView: MKMapView?
     
@@ -144,12 +138,12 @@ let animationDuration = 0.2
     
     // MARK: Helper methods
     
-    fileprivate func transitionToState(_ state: ViewState, animated: Bool) {
+    fileprivate func transitionToState(_ state: TrackerState, animated: Bool) {
         
-        guard self.viewState != state else { return }
+        guard self.tracker.state != state else { return }
         
         let imageShapeWillChange = !(
-                [.trackingLocationOff, .trackingLocation].contains(self.viewState) &&
+                [.trackingLocationOff, .trackingLocation].contains(tracker.state) &&
                 [.trackingLocationOff, .trackingLocation].contains(state))
         
         switch state {
@@ -186,13 +180,13 @@ let animationDuration = 0.2
             break
         }
 
-        self.viewState = state
+        tracker.state = state
     }
     
     fileprivate func updateState(forMapView mapView: MKMapView, animated: Bool) {
         
         serialQueue.sync {
-            let nextState: ViewState
+            let nextState: TrackerState
             switch mapView.userTrackingMode {
             case _ where self.isMapViewRetrievingLocation(mapView):
                 nextState = .retrievingLocation
