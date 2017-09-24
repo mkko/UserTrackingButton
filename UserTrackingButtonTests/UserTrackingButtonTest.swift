@@ -26,23 +26,23 @@ class UserTrackingButtonTest: XCTestCase {
     }
     
     func testStateTracking() {
-        mapView.setupUserTrackingMode(MKUserTrackingMode.Follow, location: userLocation)
+        mapView.setupUserTrackingMode(.follow, location: userLocation)
         
         button.updateStateAnimated(true)
-        XCTAssertEqual(UserTrackingButton.ViewState.TrackingLocation, button.viewState)
+        XCTAssertEqual(.trackingLocation, button.viewState)
     }
     
     func testStateRetrieving() {
-        mapView.setupUserTrackingMode(MKUserTrackingMode.Follow, location: nil)
+        mapView.setupUserTrackingMode(.follow, location: nil)
         
         button.updateStateAnimated(true)
-        XCTAssertEqual(UserTrackingButton.ViewState.RetrievingLocation, button.viewState)
+        XCTAssertEqual(.retrievingLocation, button.viewState)
     }
     
     func testStateTrackingWithHeading() {
-        mapView.setupUserTrackingMode(MKUserTrackingMode.FollowWithHeading, location: userLocation)
+        mapView.setupUserTrackingMode(.followWithHeading, location: userLocation)
         
         button.updateStateAnimated(true)
-        XCTAssertEqual(UserTrackingButton.ViewState.TrackingLocationWithHeading, button.viewState)
+        XCTAssertEqual(.trackingLocationWithHeading, button.viewState)
     }
 }

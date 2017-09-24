@@ -8,26 +8,6 @@
 
 import Foundation
 import MapKit
-fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l < r
-  case (nil, _?):
-    return true
-  default:
-    return false
-  }
-}
-
-fileprivate func >= <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l >= r
-  default:
-    return !(lhs < rhs)
-  }
-}
-
 
 let animationDuration = 0.2
 
@@ -79,7 +59,7 @@ let animationDuration = 0.2
     
     fileprivate func setup() {
         for one in [self, locationTrackingButton, locationOffButton] as [Any] {
-            (one as AnyObject).addTarget(self, action: #selector(UserTrackingButton.pressed), for: .touchUpInside)
+            (one as AnyObject).addTarget(self, action: #selector(UserTrackingButton.pressed(_:)), for: .touchUpInside)
         }
         
         locationTrackingButton.backgroundColor = self.tintColor
@@ -143,20 +123,20 @@ let animationDuration = 0.2
     
     // MARK: UI interaction
     
-    internal func pressed(_ sender: UIButton!) {
+    @objc internal func pressed(_ sender: UIButton!) {
         guard let mapView = mapView else { return }
         
         let userTrackingMode: MKUserTrackingMode
         switch mapView.userTrackingMode {
         case MKUserTrackingMode.follow where isMapViewRetrievingLocation(mapView):
             // If still retrieving location, button should abort it.
-            userTrackingMode = MKUserTrackingMode.none
+            userTrackingMode = .none
         case MKUserTrackingMode.follow:
-            userTrackingMode = MKUserTrackingMode.followWithHeading
+            userTrackingMode = .followWithHeading
         case MKUserTrackingMode.followWithHeading:
-            userTrackingMode = MKUserTrackingMode.none
+            userTrackingMode = .none
         default:
-            userTrackingMode = MKUserTrackingMode.follow
+            userTrackingMode = .follow
         }
 
         mapView.setUserTrackingMode(userTrackingMode, animated: true)
@@ -228,9 +208,11 @@ let animationDuration = 0.2
     }
     
     fileprivate func isMapViewRetrievingLocation(_ mapView: MKMapView) -> Bool {
+        let isAccurate = (mapView.userLocation.location?.horizontalAccuracy)
+            .map { $0 >= kCLLocationAccuracyHundredMeters }
+            ?? false
         return mapView.userTrackingMode != .none
-            && (mapView.userLocation.location == nil
-                || mapView.userLocation.location?.horizontalAccuracy >= kCLLocationAccuracyHundredMeters)
+            && (mapView.userLocation.location == nil || !isAccurate)
     }
     
     fileprivate func stretchView(_ view: UIView, withinView parentView: UIView) {

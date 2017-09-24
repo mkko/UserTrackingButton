@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2B1AA8981D1F2AE300DEF421 /* UserTrackingButton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B1AA8951D1F2AE300DEF421 /* UserTrackingButton.framework */; };
-		2B7A60081D35279B0021762D /* UserTrackingButton.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2B7A60071D35279B0021762D /* UserTrackingButton.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2BCBD47E1F764BFF00321D5A /* UserTrackingButton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BCBD47F1F764BFF00321D5A /* UserTrackingButton.framework */; };
 		2BFBEDDD1C14F1650075E626 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFBEDDC1C14F1650075E626 /* AppDelegate.swift */; };
 		2BFBEDDF1C14F1650075E626 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFBEDDE1C14F1650075E626 /* ViewController.swift */; };
 		2BFBEDE21C14F1650075E626 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BFBEDE01C14F1650075E626 /* Main.storyboard */; };
@@ -42,7 +41,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				2B7A60081D35279B0021762D /* UserTrackingButton.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -51,7 +49,7 @@
 
 /* Begin PBXFileReference section */
 		2B1AA8951D1F2AE300DEF421 /* UserTrackingButton.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserTrackingButton.framework; path = "/Users/mval/Development/Personal/UserTrackingButton/UserTrackingButtonExample/DerivedData/UserTrackingButtonExample/Build/Products/Debug-iphoneos/UserTrackingButton.framework"; sourceTree = "<absolute>"; };
-		2B7A60071D35279B0021762D /* UserTrackingButton.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = UserTrackingButton.framework; path = "/Users/mval/Library/Developer/Xcode/DerivedData/UserTrackingButtonExample-cnghbwrgmylnmtcjmpuqomsxxcgg/Build/Products/Debug-iphoneos/UserTrackingButton.framework"; sourceTree = "<absolute>"; };
+		2BCBD47F1F764BFF00321D5A /* UserTrackingButton.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UserTrackingButton.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BFBEDD91C14F1650075E626 /* UserTrackingButtonExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UserTrackingButtonExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BFBEDDC1C14F1650075E626 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2BFBEDDE1C14F1650075E626 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -72,7 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B1AA8981D1F2AE300DEF421 /* UserTrackingButton.framework in Frameworks */,
+				2BCBD47E1F764BFF00321D5A /* UserTrackingButton.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,9 +94,17 @@
 		2B1AA8991D1F2B2E00DEF421 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2B7A60071D35279B0021762D /* UserTrackingButton.framework */,
+				2BCBD47F1F764BFF00321D5A /* UserTrackingButton.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2B7F59031F75AAEB00692096 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				2B1AA8951D1F2AE300DEF421 /* UserTrackingButton.framework */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		2BFBEDD01C14F1650075E626 = {
@@ -109,6 +115,7 @@
 				2BFBEDFB1C14F1650075E626 /* UserTrackingButtonExampleUITests */,
 				2BFBEDDA1C14F1650075E626 /* Products */,
 				2B1AA8991D1F2B2E00DEF421 /* Frameworks */,
+				2B7F59031F75AAEB00692096 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -218,7 +225,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0710;
-				LastUpgradeCheck = 0710;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Mikko Välimäki";
 				TargetAttributes = {
 					2BFBEDD81C14F1650075E626 = {
@@ -367,13 +374,21 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -411,13 +426,21 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -436,6 +459,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -444,11 +468,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = UserTrackingButtonExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mikkovalimaki.UserTrackingButtonExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -456,11 +480,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = UserTrackingButtonExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mikkovalimaki.UserTrackingButtonExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
