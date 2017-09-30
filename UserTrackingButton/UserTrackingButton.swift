@@ -22,15 +22,22 @@ let animationDuration = 0.2
 
     //internal fileprivate(set) var viewState: ViewState = .initial
 
-    private var tracker = Tracker()
-    
+    public var tracker: Tracker? = nil
+
+    @IBOutlet open var mapView: MKMapView? {
+        set {
+            self.tracker = newValue.map { Tracker(mapView: $0) }
+        }
+        get {
+            return self.tracker?.mapView
+        }
+    }
+
     private let trackingLocationImageName = "TrackingLocation"
     private let trackingLocationOffImageName = "TrackingLocationOff"
     private let trackingLocationWithHeadingImageName = "TrackingLocationWithHeading"
     private let AnimationDuration = 0.2
-    
-    @IBOutlet open var mapView: MKMapView?
-    
+
     // MARK: Init
     
     required public override init(frame: CGRect) {
@@ -109,10 +116,11 @@ let animationDuration = 0.2
         self.locationTrackingButton.backgroundColor = self.tintColor
     }
     
-    open func updateStateAnimated(_ animated: Bool) {
-        if let mapView = self.mapView {
-            updateState(forMapView: mapView, animated: animated)
-        }
+    open func updateState(animated: Bool) {
+        self.tracker?.updateState(animated: true)
+//        if let mapView = self.mapView {
+//            updateState(forMapView: mapView, animated: animated)
+//        }
     }
     
     // MARK: UI interaction
@@ -140,7 +148,7 @@ let animationDuration = 0.2
     
     fileprivate func transitionToState(_ state: TrackerState, animated: Bool) {
         
-        guard self.tracker.state != state else { return }
+        guard let tracker = tracker, tracker.state != state else { return }
         
         let imageShapeWillChange = !(
                 [.trackingLocationOff, .trackingLocation].contains(tracker.state) &&

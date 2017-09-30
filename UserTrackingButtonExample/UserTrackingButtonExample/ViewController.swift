@@ -20,6 +20,8 @@ class ViewController: UIViewController {
     let locationManager = CLLocationManager()
 
     @IBOutlet weak var toolbar: UIToolbar!
+
+    var tracker: Tracker? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +33,9 @@ class ViewController: UIViewController {
             UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
             MKUserTrackingBarButtonItem(mapView: self.mapView)
             ], animated: false)
+
+        tracker = Tracker(mapView: self.mapView)
+        tracker?.follow(self.mapView.userLocation)
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,11 +46,11 @@ class ViewController: UIViewController {
 
 extension ViewController: MKMapViewDelegate {
     
-    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
-        userTrackingButton.updateStateAnimated(true)
-    }
-    
-    func mapView(_ mapView: MKMapView, didChange mode: MKUserTrackingMode, animated: Bool) {
-        userTrackingButton.updateStateAnimated(true)
-    }
+//    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
+//        userTrackingButton.updateState(animated: true)
+//    }
+//
+//    func mapView(_ mapView: MKMapView, didChange mode: MKUserTrackingMode, animated: Bool) {
+//        userTrackingButton.updateState(animated: true)
+//    }
 }
