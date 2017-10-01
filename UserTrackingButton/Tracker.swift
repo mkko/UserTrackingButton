@@ -36,6 +36,8 @@ public class Tracker: NSObject {
 
     let timer: DispatchSourceTimer
 
+    let locationManager: CLLocationManager
+
     var trackedAnnotation: MKAnnotation? {
         didSet {
             if let o = trackedAnnotation as? NSObject {
@@ -49,10 +51,37 @@ public class Tracker: NSObject {
 
     private var zoomOnFollow = false
 
+    public init(mapView: MKMapView) {
+        self.mapView = mapView
+        self.locationManager = CLLocationManager()
+        timer = DispatchSource.makeTimerSource(flags: .strict, queue: DispatchQueue.main)
+        timer.schedule(deadline: .now() + DispatchTimeInterval.seconds(3), repeating: .milliseconds(10), leeway: .milliseconds(100))
+        super.init()
+
+        self.locationManager.delegate = self
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager.startUpdatingLocation()
+        timer.setEventHandler(handler: {
+//            if let a = self.trackedAnnotation {
+//                if self.zoomOnFollow {
+//                    self.zoomOnFollow = false
+//                    let region = MKCoordinateRegionMakeWithDistance(a.coordinate, 1000, 1000)
+//                    self.mapView.setRegion(region, animated: false)
+//                } else {
+//                    print("\(a.coordinate)")
+//                    self.mapView.setCenter(a.coordinate, animated: false)
+//                }
+//            }
+        })
+    }
+
     public override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         //print("observeValue: \(keyPath)")
         if let a = self.trackedAnnotation {
             //let currentZoomScale: MKZoomScale = Double(mapView.bounds.size.width) / mapView.visibleMapRect.size.width
+
+//            let region = MKCoordinateRegionMakeWithDistance(a.coordinate, 1000, 1000)
+//            self.mapView.setRegion(region, animated: false)
 
             //self.mapView.setCenter(a.coordinate, animated: true)
             //print("\(self.mapView.currentMetersPerPoint())")
@@ -62,27 +91,6 @@ public class Tracker: NSObject {
     }
 
     private let serialQueue = DispatchQueue(label: "com.mikkovalimaki.UserTrackingButton", attributes: []);
-
-    public init(mapView: MKMapView) {
-        self.mapView = mapView
-
-        timer = DispatchSource.makeTimerSource(queue: DispatchQueue.main)
-        timer.schedule(deadline: .now(), repeating: .milliseconds(10), leeway: .seconds(1))
-        super.init()
-
-        timer.setEventHandler(handler: {
-            if let a = self.trackedAnnotation {
-                if self.zoomOnFollow {
-                    self.zoomOnFollow = false
-                    let region = MKCoordinateRegionMakeWithDistance(a.coordinate, 1000, 1000)
-                    self.mapView.setRegion(region, animated: false)
-                } else {
-                    print("\(a.coordinate)")
-                    self.mapView.setCenter(a.coordinate, animated: false)
-                }
-            }
-        })
-    }
 
     public func follow(_ annotation: MKAnnotation) {
         self.zoomOnFollow = true
@@ -119,4 +127,20 @@ public class Tracker: NSObject {
             && (mapView.userLocation.location == nil || !isAccurate)
     }
 
+}
+
+extension Tracker: CLLocationManagerDelegate {
+
+    public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let loc = locations.last {
+            if self.zoomOnFollow {
+                self.zoomOnFollow = false
+                let region = MKCoordinateRegionMakeWithDistance(loc.coordinate, 1000, 1000)
+                self.mapView.setRegion(region, animated: false)
+            } else {
+                print("\(loc.coordinate)")
+                self.mapView.setCenter(loc.coordinate, animated: false)
+            }
+        }
+    }
 }
