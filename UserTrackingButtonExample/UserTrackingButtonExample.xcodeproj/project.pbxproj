@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2BA83B601F80330000992036 /* UserTrackingButton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BA83B5F1F80330000992036 /* UserTrackingButton.framework */; };
-		2BA83B611F80330000992036 /* UserTrackingButton.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2BA83B5F1F80330000992036 /* UserTrackingButton.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2BA83B791F80D17200992036 /* UserTrackingButton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BA83B741F803DE300992036 /* UserTrackingButton.framework */; };
+		2BA83B7A1F80D17200992036 /* UserTrackingButton.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2BA83B741F803DE300992036 /* UserTrackingButton.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2BFBEDDD1C14F1650075E626 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFBEDDC1C14F1650075E626 /* AppDelegate.swift */; };
 		2BFBEDDF1C14F1650075E626 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFBEDDE1C14F1650075E626 /* ViewController.swift */; };
 		2BFBEDE21C14F1650075E626 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BFBEDE01C14F1650075E626 /* Main.storyboard */; };
@@ -19,6 +19,34 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		2BA83B731F803DE300992036 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2BA83B6E1F803DE300992036 /* UserTrackingButton.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2B3AFC1F1C10F35900682B14;
+			remoteInfo = UserTrackingButton;
+		};
+		2BA83B751F803DE300992036 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2BA83B6E1F803DE300992036 /* UserTrackingButton.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2B3AFC291C10F35900682B14;
+			remoteInfo = UserTrackingButtonTests;
+		};
+		2BA83B771F80D10700992036 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2BA83B6E1F803DE300992036 /* UserTrackingButton.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 2B3AFC1E1C10F35900682B14;
+			remoteInfo = UserTrackingButton;
+		};
+		2BA83B7B1F80D17200992036 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2BA83B6E1F803DE300992036 /* UserTrackingButton.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 2B3AFC1E1C10F35900682B14;
+			remoteInfo = UserTrackingButton;
+		};
 		2BFBEDEE1C14F1650075E626 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2BFBEDD11C14F1650075E626 /* Project object */;
@@ -42,7 +70,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				2BA83B611F80330000992036 /* UserTrackingButton.framework in Embed Frameworks */,
+				2BA83B7A1F80D17200992036 /* UserTrackingButton.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -51,7 +79,7 @@
 
 /* Begin PBXFileReference section */
 		2B1AA8951D1F2AE300DEF421 /* UserTrackingButton.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserTrackingButton.framework; path = "/Users/mval/Development/Personal/UserTrackingButton/UserTrackingButtonExample/DerivedData/UserTrackingButtonExample/Build/Products/Debug-iphoneos/UserTrackingButton.framework"; sourceTree = "<absolute>"; };
-		2BA83B5F1F80330000992036 /* UserTrackingButton.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UserTrackingButton.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2BA83B6E1F803DE300992036 /* UserTrackingButton.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = UserTrackingButton.xcodeproj; path = ../UserTrackingButton.xcodeproj; sourceTree = "<group>"; };
 		2BCBD47F1F764BFF00321D5A /* UserTrackingButton.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UserTrackingButton.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BFBEDD91C14F1650075E626 /* UserTrackingButtonExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UserTrackingButtonExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BFBEDDC1C14F1650075E626 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -73,7 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2BA83B601F80330000992036 /* UserTrackingButton.framework in Frameworks */,
+				2BA83B791F80D17200992036 /* UserTrackingButton.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,10 +138,19 @@
 			name = "Recovered References";
 			sourceTree = "<group>";
 		};
+		2BA83B6F1F803DE300992036 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2BA83B741F803DE300992036 /* UserTrackingButton.framework */,
+				2BA83B761F803DE300992036 /* UserTrackingButtonTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		2BFBEDD01C14F1650075E626 = {
 			isa = PBXGroup;
 			children = (
-				2BA83B5F1F80330000992036 /* UserTrackingButton.framework */,
+				2BA83B6E1F803DE300992036 /* UserTrackingButton.xcodeproj */,
 				2BFBEDDB1C14F1650075E626 /* UserTrackingButtonExample */,
 				2BFBEDF01C14F1650075E626 /* UserTrackingButtonExampleTests */,
 				2BFBEDFB1C14F1650075E626 /* UserTrackingButtonExampleUITests */,
@@ -180,6 +217,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				2BA83B781F80D10700992036 /* PBXTargetDependency */,
+				2BA83B7C1F80D17200992036 /* PBXTargetDependency */,
 			);
 			name = UserTrackingButtonExample;
 			productName = UserTrackingButtonExample;
@@ -256,6 +295,12 @@
 			mainGroup = 2BFBEDD01C14F1650075E626;
 			productRefGroup = 2BFBEDDA1C14F1650075E626 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 2BA83B6F1F803DE300992036 /* Products */;
+					ProjectRef = 2BA83B6E1F803DE300992036 /* UserTrackingButton.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				2BFBEDD81C14F1650075E626 /* UserTrackingButtonExample */,
@@ -264,6 +309,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		2BA83B741F803DE300992036 /* UserTrackingButton.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = UserTrackingButton.framework;
+			remoteRef = 2BA83B731F803DE300992036 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2BA83B761F803DE300992036 /* UserTrackingButtonTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = UserTrackingButtonTests.xctest;
+			remoteRef = 2BA83B751F803DE300992036 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		2BFBEDD71C14F1650075E626 /* Resources */ = {
@@ -338,6 +400,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		2BA83B781F80D10700992036 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = UserTrackingButton;
+			targetProxy = 2BA83B771F80D10700992036 /* PBXContainerItemProxy */;
+		};
+		2BA83B7C1F80D17200992036 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = UserTrackingButton;
+			targetProxy = 2BA83B7B1F80D17200992036 /* PBXContainerItemProxy */;
+		};
 		2BFBEDEF1C14F1650075E626 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 2BFBEDD81C14F1650075E626 /* UserTrackingButtonExample */;
@@ -471,6 +543,7 @@
 		2BFBEE021C14F1650075E626 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = UserTrackingButtonExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -483,6 +556,7 @@
 		2BFBEE031C14F1650075E626 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = UserTrackingButtonExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
