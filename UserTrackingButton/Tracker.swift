@@ -56,7 +56,7 @@ public class Tracker: NSObject {
 
             //self.mapView.setCenter(a.coordinate, animated: true)
             //print("\(self.mapView.currentMetersPerPoint())")
-            print("\(self.mapView.visibleMapRect.size)")
+            //print("\(self.mapView.visibleMapRect.size)")
         }
 
     }
@@ -67,7 +67,7 @@ public class Tracker: NSObject {
         self.mapView = mapView
 
         timer = DispatchSource.makeTimerSource(queue: DispatchQueue.main)
-        timer.schedule(deadline: .now(), repeating: .milliseconds(100), leeway: .seconds(1))
+        timer.schedule(deadline: .now(), repeating: .milliseconds(10), leeway: .seconds(1))
         super.init()
 
         timer.setEventHandler(handler: {
@@ -77,6 +77,7 @@ public class Tracker: NSObject {
                     let region = MKCoordinateRegionMakeWithDistance(a.coordinate, 1000, 1000)
                     self.mapView.setRegion(region, animated: false)
                 } else {
+                    print("\(a.coordinate)")
                     self.mapView.setCenter(a.coordinate, animated: false)
                 }
             }
