@@ -209,7 +209,7 @@ let animationDuration = 0.2
     
     fileprivate func isMapViewRetrievingLocation(_ mapView: MKMapView) -> Bool {
         let isAccurate = (mapView.userLocation.location?.horizontalAccuracy)
-            .map { $0 >= kCLLocationAccuracyHundredMeters }
+            .map { $0 < kCLLocationAccuracyHundredMeters }
             ?? false
         return mapView.userTrackingMode != .none
             && (mapView.userLocation.location == nil || !isAccurate)
