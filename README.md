@@ -10,13 +10,13 @@ UserTrackingButton is a button that works in conjunction with `MKMapView`. Unlik
 
 #### Carthage
 
-Add `github "mkko/UserTrackingButton" ~> 0.2` to you `Cartfile`. Follow the further instrcutions on [Carthage getting started][1] page.
+Add `github "mkko/UserTrackingButton" ~> 0.3.1` to you `Cartfile`. Follow the further instrcutions on [Carthage getting started][1] page.
 
 *NB: There is a bug with `@IBDesignable` when using external frameworks that prevents the view from rendering wihtin Interface Builder. Further reading can be found [here][2].*
 
 #### CocoaPods
 
-Add `pod 'UserTrackingButton', '~> 0.2'` to you `Podfile` and run `pod install`.
+Add `pod 'UserTrackingButton', '~> 0.3.1'` to you `Podfile` and run `pod install`.
 
 ## Setup
 
