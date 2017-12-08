@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "UserTrackingButton"
-  s.version      = "0.1.1"
+  s.version      = "0.3.1"
   s.summary      = "A replacement for MKUserTrackingBarButtonItem"
 
   s.description  = <<-DESC
@@ -23,13 +23,13 @@ Pod::Spec.new do |s|
 
                    #### Carthage
 
-                   Add `github "mkko/UserTrackingButton" ~> 0.1` to you `Cartfile`. Follow the further instrcutions on [Carthage getting started][1] page.
+                   Add `github "mkko/UserTrackingButton" ~> 0.3.1` to you `Cartfile`. Follow the further instrcutions on [Carthage getting started][1] page.
 
                    *NB: There is a bug with `@IBDesignable` when using external frameworks that prevents the view from rendering wihtin Interface Builder. Further reading can be found [here][2].*
 
                    #### Cocoapods
 
-                   Add `pod 'UserTrackingButton', '~> 0.1'` to you `Podfile` and run `pod install`.
+                   Add `pod 'UserTrackingButton', '~> 0.3.1'` to you `Podfile` and run `pod install`.
 
                    ## Setup
 
