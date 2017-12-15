@@ -24,7 +24,7 @@ Add `pod 'UserTrackingButton', '~> 0.3.1'` to you `Podfile` and run `pod install
 
 To use UserTrackingButton from Interface Builder simply subclass a `UIView` component and set its class to UserTrackingButton. Then connect the `mapView` outlet and remember to update the button in `MKMapViewDelegate` methods:
 
-```
+```swift
 extension ViewController: MKMapViewDelegate {
     
     func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
@@ -39,14 +39,14 @@ extension ViewController: MKMapViewDelegate {
 
 The manual updating is a minor inconvenience as the `MKMapView` instance can only have one delegate. However, if you're using RxSwift, there's a [wrapper][3] to make this easier:
 
-```
+```swift
         Observable.combineLatest(mapView.rx_didUpdateUserLocation, mapView.rx_didChangeUserTrackingMode) { return ($0, $1) }
             .subscribe { _ in self.userTrackingButton.updateState(true) }
             /* Also this, if you're using: */ .addDisposableTo(disposeBag)
 ```
 
 When creating the button programmatically the same steps are required:
-```
+```swift
 let btn = UserTrackingButton(frame: trackingButtonFrame)
 btn.mapView = self.mapView
 self.view.addSubview(btn)
