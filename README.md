@@ -1,3 +1,5 @@
+**NOTE: iOS 11 added MKUserTrackingButton that does exactly what this project is intended to be and should be preferred over this.**
+
 # UserTrackingButton
 
 A replacement for `MKUserTrackingBarButtonItem` when you don't have toolbars or navigation bars.
